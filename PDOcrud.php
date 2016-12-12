@@ -21,22 +21,6 @@ class PDOcrud{
 
     }
 
-    function createBD($dbname){
-
-    }
-
-    function deleteBD($dbname){
-
-    }
-
-
-    function createTable(){
-    }
-
-
-    function deleteTable(){
-
-    }
 
 }
 

@@ -1,0 +1,14 @@
+--Quan es logueji un profesor es mostrara la taula de la seva asignatura anb les alumnes i les notes posades o per posar
+--Quan es logueji un alumne es mostrara les asignatures on esta + la nota
+
+-Arreglar taules
+-Arreglar "ErrorCatcher" de BDChecker
+-Preguntar sergi sobre reposta del select de getAsignatura a MySQLCrud
+
+-Pulir login
+
+-Crear CRUD de PDO per alumnes
+
+-Grafic ImageMagick
+
+-Crear amb MDL formularis i estil de pagina

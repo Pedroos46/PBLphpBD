@@ -1,0 +1,7 @@
+.mdl-layout {
+    align-items: center;
+    justify-content: center;
+}
+.mdl-layout__content {
+    padding: 50px;
+}
