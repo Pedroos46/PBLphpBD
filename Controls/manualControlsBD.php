@@ -90,36 +90,34 @@ class manualControlsBD{
       $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
       try {
           $db->begin_transaction();
+          //"CREATE TABLE alumne (alumID INT(15), alumDNI VARCHAR(10) PRIMARY KEY, alumNom VARCHAR(45), alumCognom VARCHAR(45), alumContra VARCHAR(45))"
 
           $sentencia = 'CREATE TABLE IF NOT EXISTS alumne(
-                          alumID INT(15) NOT NULL AUTO_INCREMENT,
-                          DNI VARCHAR(20) NOT NULL, 
-                          cognom VARCHAR(45),
-                          curs VARCHAR(50),
-                          contrasenya VARCHAR(45),
-                          PRIMARY KEY (DNI);';
+                          alumID INT NOT NULL UNIQUE AUTO_INCREMENT,
+                          alumDNI VARCHAR(20) PRIMARY KEY,
+                          nom VARCHAR(45) NOT NULL,
+                          cognom VARCHAR(45) NOT NULL,
+                          contrasenya VARCHAR(45) NOT NULL);';
           $stmt = $db->prepare($sentencia);
           $stmt->execute();
 
 
           $sentencia = 'CREATE TABLE IF NOT EXISTS asignatures(
-                          nom_asignatura VARCHAR(45) NOT NULL,
+                          nom_asignatura VARCHAR(45) PRIMARY KEY,
                           DNI_Alumne VARCHAR(20),
                           Nota INT,
-                          PRIMARY KEY (nom_asignatura),
-                          FOREIGN KEY (DNI_Alumne) REFERENCES alumne(DNI)';
+                          FOREIGN KEY (DNI_Alumne) REFERENCES alumne(alumDNI));';
           $stmt = $db->prepare($sentencia);
           $stmt->execute();
 
-          $sentencia = 'CREATE TABLE IF NOT EXISTs profesors(
-                          profID INT NOT NULL AUTO_INCREMENT,
-                          DNI_Profesor VARCHAR(20) NOT NULL,
-                          nom VARCHAR(45),
-                          cognom VARCHAR(45),
+          $sentencia = 'CREATE TABLE IF NOT EXISTS profesors(
+                          profID INT NOT NULL UNIQUE AUTO_INCREMENT,
+                          DNI_Profesor VARCHAR(20) PRIMARY KEY,
+                          nom VARCHAR(45) NOT NULL,
+                          cognom VARCHAR(45) NOT NULL,
                           asignatura VARCHAR(50),
-                          contrasenya VARCHAR(45),
-                          PRIMARY KEY (DNI),
-                          FOREIGN KEY (asignatura) REFERENCES assignatura(nom_asignatura)';
+                          contrasenya VARCHAR(45) NOT NULL,
+                          FOREIGN KEY (asignatura) REFERENCES asignatures(nom_asignatura));';
           $stmt = $db->prepare($sentencia);
           $stmt->execute();
 
@@ -144,15 +142,15 @@ class manualControlsBD{
       try {
           $db->begin_transaction();
 
-          $setencia = 'DROP TABLE IF NOT EXIST alumne';
+          $setencia = 'DROP TABLE profesors';
           $stmt = $db->prepare($setencia);
           $stmt->execute();
 
-          $setencia = 'DROP TABLE IF NOT EXIST assignatures';
+          $setencia = 'DROP TABLE asignatures';
           $stmt = $db->prepare($setencia);
           $stmt->execute();
 
-          $setencia = 'DROP TABLE IF NOT EXIST profesors';
+          $setencia = 'DROP TABLE alumne';
           $stmt = $db->prepare($setencia);
           $stmt->execute();
 

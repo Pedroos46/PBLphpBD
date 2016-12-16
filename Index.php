@@ -1,16 +1,19 @@
 <?php
-spl_autoload_register(function ($clase) {
-    include $clase . '.php';
-});
+require_once("Controls/DBChecker.php");
+require_once("Controls/manualControlsBD.php");
+require_once("Logica/loginManager.php");
+
 
 $BDconf = ["localhost", "root", "root", "escola"];
 
 $Check = new DBChecker($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 $Controls = new manualControlsBD($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
+$Login = new loginManager($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 
-// $MySQLi = new MySQLcrud($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
-// $PDO = new PDOcrud($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
-//echo $Controls->BDconnection();//echo $Controls->deleteTables();//echo $Controls->deleteBD();//echo $Controls->createBD();//echo $Controls->createTables();// echo $Check->initCheck();
+$Run = array();
+foreach ($Check->initCheck()as $val ) {
+    array_push($Run,$val);
+}
 ?>
 <html>
   <head>
@@ -35,35 +38,46 @@ $Controls = new manualControlsBD($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
               </div>
               <div class="mdl-card__supporting-text">
 
-                  <form  id='login' action="#" method='post' accept-charset='UTF-8'>
+                  <form  id='login' action="Index.php" method='post' accept-charset='UTF-8'>
                       <div class="mdl-textfield mdl-js-textfield">
-                          <input class="mdl-textfield__input" type="text" id="username" autocomplete="off" />
+                          <input class="mdl-textfield__input" type="text" name='username' id="username" autocomplete="off" />
                           <label class="mdl-textfield__label" for="username">Usuari</label>
                       </div>
 
                       <div class="mdl-textfield mdl-js-textfield">
-                          <input class="mdl-textfield__input" type="password" id="userpass" autocomplete="off" />
+                          <input class="mdl-textfield__input" type="password" name='userpass' id="userpass" autocomplete="off" />
                           <label class="mdl-textfield__label" for="userpass">Contrasenya</label>
                       </div>
-                  </form>
 
-              </div>
-              <div class="mdl-card__actions mdl-card--border">
-                  <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Log in</button>
+                      <div class="mdl-card__actions mdl-card--border">
+                          <button type='submit' class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" name='Submit'>
+                              Log in
+                          </button>
+                      </div>
+                  </form>
+                  <?php
+                      if(isset($_POST['username']) && isset($_POST['userpass']) ){
+                          echo '<div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>';
+                          if($Login->loginCheck($_POST['username'],$_POST['userpass']) == true){
+                              header("Location: http://localhost/daw2/php/PBLphpBD/Panel.php");
+                          }else{
+                              echo "Error d'usuari o contrasenya";
+                          }
+                      }
+                  ?>
               </div>
           </div>
-              <?php
-                  $Run = array(1 => $Controls->BDconnection());
-                  echo '<ul class="demo-list-item mdl-list">';
-                  foreach ($Run as $val ) {
-                      echo '<li class="mdl-list__item">';
-                      echo '<span class="mdl-list__item-primary-content">';
-                      echo $val;
-                      echo '</span>';
-                      echo '</li>';
-                  }
-                  echo '</ul>';
-              ?>
+          <?php
+          echo '<ul class="demo-list-item mdl-list">';
+          foreach ($Run as $val ) {
+              echo '<li class="mdl-list__item">';
+              echo '<span class="mdl-list__item-primary-content">';
+              echo $val;
+              echo '</span>';
+              echo '</li>';
+          }
+          echo '</ul>';
+          ?>
       </main>
   </div>
 
