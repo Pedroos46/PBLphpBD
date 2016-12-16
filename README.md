@@ -1,8 +1,8 @@
 # PBLphpBD
+-------------------------------------------------------------------
 
---------------------------------------------------------------------
 UPDATE 2 REVERTIDA PER ERROR. UPDATE 2.1:
-
+--------------------------------------------------------------------
 -Carpetes Reorganitzades
 -CRUD MYSQLi acabat
 -MDL + generar taules
@@ -11,8 +11,10 @@ UPDATE 2 REVERTIDA PER ERROR. UPDATE 2.1:
 -Crud PDO funcionant
 
 -Problema amb la taula asignatures
+
+
+Big Update:
 ---------------------------------------------------------------------
-Big Update
 -Mysql crud
 -Checker
 -1/2 Login
