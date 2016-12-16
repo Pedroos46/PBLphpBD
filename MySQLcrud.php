@@ -2,6 +2,10 @@
 /**
 * @author Roger Pedrós Villorbina
 */
+spl_autoload_register(function ($clase) {
+    include $clase . '.php';
+});
+
 class MySQLcrud{
   private $url = '';
   private $user = '';
@@ -18,7 +22,7 @@ class MySQLcrud{
   function __destruct(){}
 
   function BDconnection(){
-        $db = new mysqli($this->url, $this->user, $this->pass);
+        $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
         if ($db->connect_errno) {
             return false;
             exit;
@@ -29,16 +33,16 @@ class MySQLcrud{
     //CRUD ASGINATURES
 
   function fillAsignatura($nomAsingatura, $DNIAlumne, $Nota){
-//     if($this->BDconnection() == false){
-//       return "Sense conexió amb la BD";
-//       exit;
-//     }
-     try {
-         $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
+     if($this->BDconnection() == false){
+       echo "Sense conexió amb la BD";
+       exit;
+     }
 
+     $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
+     try {
          $db->begin_transaction();
 
-         $setencia = 'INSERT INTO asignatures(nom_asignatura,DNI_Alumne, Nota) VALUES (?, ?, ?)';
+         $setencia = 'INSERT INTO assignatures(nom_asignatura, DNI_Alumne, Nota,) VALUES (?, ?, ?)';
          $stmt = $db->prepare($setencia);
          $stmt->bind_param('ssi', $nomAsingatura, $DNIAlumne, $Nota);
 
@@ -55,13 +59,13 @@ class MySQLcrud{
   }
 
   function deleteAsignatura($nomAsingatura){
-//     if($this->BDconnection() == false){
-//       return "Sense conexió amb la BD";
-//       exit;
-//     }
-      try {
-         $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
+     if($this->BDconnection() == false){
+       echo "Sense conexió amb la BD";
+       exit;
+     }
 
+     $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
+     try {
          $db->begin_transaction();
 
          $setencia = 'DELETE FROM asignatures WHERE nom_asignatura = ?';
@@ -81,16 +85,16 @@ class MySQLcrud{
   }
 
   function updateAsignatura($nomAsingatura, $DNIAlumne, $Nota){
-//      if ($this->BDconnection() == false) {
-//          return "Sense conexió amb la BD";
-//          exit;
-//      }
-      try {
-          $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
+      if ($this->BDconnection() == false) {
+          echo "Sense conexió amb la BD";
+          exit;
+      }
 
+      $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
+      try {
           $db->begin_transaction();
 
-          $setencia = 'UPDATE asignatures SET DNI_Alumne = ?, Nota = ?, WHERE nom_asignatura = ?)';
+          $setencia = 'UPDATE asignatures SET DNI_Alumne = ?, Nota = ?, WHERE nom_asignatura = ?);';
           $stmt = $db->prepare($setencia);
           $stmt->bind_param('sis', $DNIAlumne, $Nota, $nomAsingatura);
 
@@ -100,33 +104,36 @@ class MySQLcrud{
           $db->commit();
           return "S'ha actualitzat la informacio correctament";
 
-          $db->close();
+            $db->close();
         } catch (Exception $e) {
           $db->rollback();
       }
   }
 
-  function getAsignatura($nomAsignatura){
-//      if ($this->BDconnection() == false) {
-//          return "Sense conexió amb la BD";
-//          exit;
-//      }
-      try {
-          $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
+  function getAsignatura($nomAsingatura)
+  {
+      if ($this->BDconnection() == false) {
+          echo "Sense conexió amb la BD";
+          exit;
+      }
 
+      $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
+      try {
           $db->begin_transaction();
 
-          $setencia = 'SELECT * FROM asignatures WHERE nom_asignatura = ?';
+          $setencia = 'SELECT * FROM asignatures WHERE nom_asignatura = ?);';
           $stmt = $db->prepare($setencia);
-          $stmt->bind_param('s', $nomAsignatura);
+          $stmt->bind_param('s', $nomAsingatura);
 
           $stmt->execute();
-          $result = $stmt->get_result();
-          $resposta = $result->fetch_assoc();
+          /* ligar variables de resultado */
+          $stmt->bind_result($resposta);
+          $stmt->fetch();
 
           return $resposta;
 
           $stmt->close();
+          //TODO PREGUNTA AL SERGI GRAU SI AIXO DEL FETCH I LA RESPOSTA ESTA BE
           $db->commit();
 
           $db->close();
@@ -138,13 +145,13 @@ class MySQLcrud{
     //CRUD PROFESOR
 
     function fillProfesors($DNIProfesor, $NomProfesor, $CognomProfesor, $Asignatura, $Contrasenya){
-//     if($this->BDconnection() == false){
-//       return "Sense conexió amb la BD";
-//       exit;
-//     }
-     try {
-         $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
+     if($this->BDconnection() == false){
+       echo "Sense conexió amb la BD";
+       exit;
+     }
 
+     $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
+     try {
          $db->begin_transaction();
 
          $setencia = 'INSERT INTO profesors(DNI_Profesor, nom, cognom, asignatura,contrasenya) VALUES (?, ?, ?, ?, ?)';
@@ -164,13 +171,13 @@ class MySQLcrud{
   }
 
   function deleteProfesor($DNIProfesor){
-//     if($this->BDconnection() == false){
-//        return "Sense conexió amb la BD";
-//        exit;
-//     }
-      try {
-         $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
+     if($this->BDconnection() == false){
+       echo "Sense conexió amb la BD";
+       exit;
+     }
 
+     $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
+     try {
          $db->begin_transaction();
 
          $setencia = 'DELETE FROM profesors WHERE DNI_Profesor = ?';
@@ -190,13 +197,13 @@ class MySQLcrud{
   }
 
   function updateProfesor($DNIProfesor, $NomProfesor, $CognomProfesor, $Asignatura, $Contrasenya){
-//      if ($this->BDconnection() == false) {
-//          echo "Sense conexió amb la BD";
-//          exit;
-//      }
-      try {
-          $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
+      if ($this->BDconnection() == false) {
+          echo "Sense conexió amb la BD";
+          exit;
+      }
 
+      $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
+      try {
           $db->begin_transaction();
 
           $setencia = 'UPDATE asignatures SET nom = ?, cognom = ?, asignatura = ?, contrasenya = ?, WHERE DNI_Profesor = ?);';
@@ -216,26 +223,28 @@ class MySQLcrud{
   }
 
   function getProfesor($DNI_Profesor){
-//      if ($this->BDconnection() == false) {
-//          return "Sense conexió amb la BD";
-//          exit;
-//      }
-      try {
-          $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
+      if ($this->BDconnection() == false) {
+          echo "Sense conexió amb la BD";
+          exit;
+      }
 
+      $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
+      try {
           $db->begin_transaction();
 
-          $setencia = 'SELECT * FROM profesors WHERE DNI_Profesor = ?';
+          $setencia = 'SELECT * FROM profesors WHERE DNI_Profesor = ?);';
           $stmt = $db->prepare($setencia);
           $stmt->bind_param('s', $DNI_Profesor);
 
           $stmt->execute();
-          $result = $stmt->get_result();
-          $resposta = $result->fetch_assoc();
+          /* ligar variables de resultado */
+          $stmt->bind_result($resposta);
+          $stmt->fetch();
 
           return $resposta;
 
           $stmt->close();
+          //TODO PREGUNTA AL SERGI GRAU SI AIXO DEL FETCH I LA RESPOSTA ESTA BE
           $db->commit();
 
           $db->close();
