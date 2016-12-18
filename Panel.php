@@ -22,11 +22,12 @@ $MySQLi = new MySQLcrud($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 $PDO = new PDOcrud($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 
 //print_r($MySQLi->getAsignaturaAlum("47931590G"));
-print_r($MySQLi->getAsignaturaProf("Matematiques"));
+//print_r($MySQLi->getAsignaturaProf($usuari[$asignatura]));
 
 if($_SESSION['type'] == "Profesor"){
    $usuari = $MySQLi->getProfesor($_SESSION['dni']);
-   $asig = $MySQLi->getAsignaturaProf($usuari[$asignatura]);
+   $asig = $MySQLi->getAsignaturaProf($usuari[asignatura]);
+
 }
 
 if($_SESSION['type'] == "Alumne"){
@@ -69,35 +70,76 @@ if($_SESSION['type'] == "Alumne"){
             <div class="page-content">
                 <!--GENERADOR TAULA-->
                 <?php
-                if($_SESSION['type'] == "Profesor"){
-                    ProfTab($asig);
+                if($_SESSION['type'] == "Profesor"){//OSIFUI QUAN S'HAN DE CARREGAR TOTS ELS ALUMNES D'UNA ASIGNATURA
+                    echo '<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">';
+                            echo '<thead>';
+                                echo '<tr>';
+                                    echo '<th>DNI Alumne</th>';
+                                    echo '<th>Alumne</th>';
+                                    echo '<th>Nota</th>';
+                                    echo '<th>Edita</th>';
+                                echo '</tr>';
+                            echo '</thead>';
+                        echo '<tbody>';
+                            $iteracionsMax = count($asig);
+                            $i = 0;
+                            while($iteracionsMax > $i){
+                                $nomAlum = $PDO->getAlumne($asig[$i][DNI_Alumne]);
+
+                                echo '<tr>';
+                                    echo '<td>' . $asig[$i][DNI_Alumne] . '</td>';
+                                    echo '<td>' . $nomAlum[nom] . ' ' . $nomAlum[cognom] . '</td>';
+                                    echo '<td>' . $asig[$i][Nota] . '</td>';
+                                    echo '<td> <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                                <i class="material-icons mdl-list__item-icon">mode_edit</i>
+                                                </button> 
+                                          </td>';
+                                echo '</tr>';
+                                $i++;
+                            }
+                        echo '</tbody>';
+                    echo '</table>';
                 }
-                if($_SESSION['type'] == "Alumne"){
-                    AlumnTab($asig);
+
+                if($_SESSION['type'] == "Alumne"){ //OSIFUI QUAN S'HAN DE CARREGAR TOTES LES ASIGNATURES D'UN ALUMNE
+                    echo '<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">';
+                            echo '<thead>';
+                                echo '<tr>';
+                                    echo '<th>DNI alumne</th>';
+                                    echo '<th>Asignatura</th>';
+                                    echo '<th>Nota</th>';
+                                echo '</tr>';
+                            echo '</thead>';
+                        echo '<tbody>';
+                            $iteracionsMax = count($asig);
+                            $i = 0;
+                            while($iteracionsMax > $i){
+                                echo '<tr>';
+                                echo '<td>' . $asig[$i][DNI_Alumne] . '</td>';
+                                echo '<td>' . $asig[$i][nom_asignatura] . '</td>';
+                                echo '<td>' . $asig[$i][Nota] . '</td>';
+                                echo '</tr>';
+                            $i++;
+                            }
+                        echo '</tbody>';
+                    echo '</table>';
                 }
                 ?>
+
+            <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__media">
+<!--                        Per aqui haurie d'anar el grafic-->
+                    <img src="photo.png">
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <div class="mdl-card__supporting-text">
+                        Explicacio de la grafica
+                    </div>
+                </div>
+
             </div>
 
-<!--            <div class="demo-card-wide mdl-card mdl-shadow--2dp">-->
-<!--                <div class="mdl-card__title">-->
-<!--                    <h2 class="mdl-card__title-text">Welcome</h2>-->
-<!--                </div>-->
-<!--                <div class="mdl-card__supporting-text">-->
-<!--                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.-->
-<!--                    Mauris sagittis pellentesque lacus eleifend lacinia...-->
-<!--                </div>-->
-<!--                <div class="mdl-card__actions mdl-card--border">-->
-<!--                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">-->
-<!--                        Get Started-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--                <div class="mdl-card__menu">-->
-<!--                    <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">-->
-<!--                        <i class="material-icons">share</i>-->
-<!--                    </button>-->
-<!--                </div>-->
-<!--            </div>-->
-
+            </div>
 
         </main>
     </div>
@@ -105,53 +147,4 @@ if($_SESSION['type'] == "Alumne"){
 </body>
 </html>
 
-
-<?php
-function ProfTab($asig){ //OSIFUI QUAN S'HAN DE CARREGAR TOTS ELS ALUMNES D'UNA ASIGNATURA
-    echo '<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">';
-            echo '<thead>';
-                echo '<tr>';
-                    echo '<th>Nom alumne</th>';
-                    echo '<th>Alumnes</th>';
-                    echo '<th>Nota</th>';
-                echo '</tr>';
-            echo '</thead>';
-        echo '<tbody>';
-            $iteracionsMax = count($asig);
-            $i = 0;
-            while($iteracionsMax > $i){
-                echo '<tr>';
-                echo '<td>' . $asig[$i][DNI_Alumne] . '</td>';
-                echo '<td>' . $asig[$i][nom_asignatura] . '</td>';
-                echo '<td>' . $asig[$i][Nota] . '</td>';
-                echo '</tr>';
-                $i++;
-            }
-        echo '</tbody>';
-    echo '</table>';
 }
-function AlumnTab($asig){ //OSIFUI QUAN S'HAN DE CARREGAR TOTES LES ASIGNATURES D'UN ALUMNE
-    echo '<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">';
-            echo '<thead>';
-                echo '<tr>';
-                    echo '<th>DNI alumne</th>';
-                    echo '<th>Asignatura</th>';
-                    echo '<th>Nota</th>';
-                echo '</tr>';
-            echo '</thead>';
-        echo '<tbody>';
-            $iteracionsMax = count($asig);
-            $i = 0;
-            while($iteracionsMax > $i){
-                echo '<tr>';
-                echo '<td>' . $asig[$i][DNI_Alumne] . '</td>';
-                echo '<td>' . $asig[$i][nom_asignatura] . '</td>';
-                echo '<td>' . $asig[$i][Nota] . '</td>';
-                echo '</tr>';
-            $i++;
-            }
-        echo '</tbody>';
-    echo '</table>';
-}
-
-?>

@@ -1,10 +1,24 @@
 .page-content {
     align-items: center;
-    justify-content: center;
+    text-align: left;
+
 }
 .mdl-layout__content{
     padding: 50px;
 }
+
+th{
+    text-align: left;
+}
+
+tr{
+    text-align: left;
+}
+
+td{
+    text-align: left;
+}
+
 
 .demo-card-wide.mdl-card {
      width: 512px;
@@ -17,4 +31,11 @@
 
 .demo-card-wide > .mdl-card__menu {
     color: #fff;
+}
+
+.mdl-card__media{
+    width: 220px;
+    height: 140px;
+    border: 0;
+    padding: 20px;
 }
