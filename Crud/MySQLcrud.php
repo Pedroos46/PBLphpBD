@@ -106,7 +106,7 @@ class MySQLcrud{
       }
   }
 
-  function getAsignatura($nomAsignatura){
+  function getAsignaturaProf($nomAsignatura){
 //      if ($this->BDconnection() == false) {
 //          return "Sense conexió amb la BD";
 //          exit;
@@ -122,8 +122,39 @@ class MySQLcrud{
 
           $stmt->execute();
           $result = $stmt->get_result();
-          $resposta = $result->fetch_assoc();
+          while($respostes = $result->fetch_assoc()){
+              $resposta[] = $respostes;
+          }
+          return $resposta;
 
+          $stmt->close();
+          $db->commit();
+
+          $db->close();
+        } catch (Exception $e) {
+          $db->rollback();
+      }
+  }
+  function getAsignaturaAlum($DNIAlumne){
+//      if ($this->BDconnection() == false) {
+//          return "Sense conexió amb la BD";
+//          exit;
+//      }
+      try {
+          $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
+
+          $db->begin_transaction();
+
+          $setencia = 'SELECT * FROM asignatures WHERE DNI_Alumne = ?';
+          $stmt = $db->prepare($setencia);
+          $stmt->bind_param('s', $DNIAlumne);
+
+          $stmt->execute();
+          $result = $stmt->get_result();
+
+          while($respostes = $result->fetch_assoc()){
+              $resposta[] = $respostes;
+          }
           return $resposta;
 
           $stmt->close();

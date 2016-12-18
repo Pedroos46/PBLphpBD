@@ -1,14 +1,33 @@
 <?php
+error_reporting(E_ALL ^ E_NOTICE);
+
 require_once("Controls/DBChecker.php");
 require_once("Controls/manualControlsBD.php");
 require_once("Logica/loginManager.php");
+require_once("Crud/MySQLcrud.php");
+require_once("Crud/PDOcrud.php");
 
+session_start();
+$_SESSION['loged'] = false;
 
 $BDconf = ["localhost", "root", "root", "escola"];
 
 $Check = new DBChecker($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 $Controls = new manualControlsBD($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 $Login = new loginManager($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
+
+$MySQLi = new MySQLcrud($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
+$PDO = new PDOcrud($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
+
+//$PDO->fillAlumne("47931590G","Roger","Pedrós","1234");
+//$PDO->fillAlumne("47931591G","Robert","Montoro","1234");
+//$MySQLi->fillAsignatura("Matematiques","47931590G", 7);
+//$MySQLi->fillAsignatura("Matematiques","47931591G", 2);
+//$MySQLi->fillAsignatura("Ciencies","47931590G", 7);
+//$MySQLi->fillAsignatura("Ciencies","47931591G", 10);
+//$MySQLi->fillProfesors("47931594G","Sergi","Grau","Matematiques","1234");
+//$MySQLi->fillProfesors("47931595G","Jordi","Binefa","Llengua","1234");
+//$MySQLi->fillProfesors("47931596G","Hector","Lopez","Ciencies","1234");
 
 $Run = array();
 foreach ($Check->initCheck()as $val ) {

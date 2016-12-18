@@ -19,19 +19,30 @@ class loginManager{
     }
 
     function loginCheck($userDNI, $pass){
-      $profesor = $this->MySQLi->getProfesor($userDNI);
-      $alumne = $this->PDO->getAlumne($userDNI);
+        session_start();
+        $profesor = $this->MySQLi->getProfesor($userDNI);
+        $alumne = $this->PDO->getAlumne($userDNI);
 
-      if (empty($userDNI) || empty($pass)){
-          return false;
-          exit;
-      }
 
-      if(($alumne[contrasenya] || $profesor[contrasenya]) == $pass){
-          return true;
-      }else{
-          return false;
-      }
+        if (empty($userDNI) || empty($pass)){
+            return false;
+            exit;
+        }
+
+        if(count($profesor) > 2){
+            $_SESSION['type'] = "Profesor";
+        }
+        if(count($alumne) > 2){
+            $_SESSION['type'] = "Alumne";
+        }
+
+        if(($alumne[contrasenya] || $profesor[contrasenya]) == $pass){
+            $_SESSION['loged'] = true; $_SESSION['dni']=$userDNI;
+            return true;
+        }else{
+            $_SESSION['loged'] = false;
+            return false;
+        }
     }
 
 }

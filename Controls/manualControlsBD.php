@@ -102,8 +102,8 @@ class manualControlsBD{
           $stmt->execute();
 
 
-          $sentencia = 'CREATE TABLE IF NOT EXISTS asignatures(
-                          nom_asignatura VARCHAR(45) PRIMARY KEY,
+          $sentencia = 'CREATE TABLE IF NOT EXISTS asignatures(  
+                          nom_asignatura VARCHAR(45),
                           DNI_Alumne VARCHAR(20),
                           Nota INT,
                           FOREIGN KEY (DNI_Alumne) REFERENCES alumne(alumDNI));';
@@ -115,9 +115,8 @@ class manualControlsBD{
                           DNI_Profesor VARCHAR(20) PRIMARY KEY,
                           nom VARCHAR(45) NOT NULL,
                           cognom VARCHAR(45) NOT NULL,
-                          asignatura VARCHAR(50),
-                          contrasenya VARCHAR(45) NOT NULL,
-                          FOREIGN KEY (asignatura) REFERENCES asignatures(nom_asignatura));';
+                          asignatura VARCHAR(50) NOT NULL,
+                          contrasenya VARCHAR(45) NOT NULL);';
           $stmt = $db->prepare($sentencia);
           $stmt->execute();
 
