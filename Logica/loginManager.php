@@ -35,9 +35,12 @@ class loginManager{
         if(count($alumne) > 2){
             $_SESSION['type'] = "Alumne";
         }
-
+        print_r($alumne[contrasenya]);
+        print_r($profesor[contrasenya]);
+        print_r($pass);
         if(($alumne[contrasenya] || $profesor[contrasenya]) == $pass){
             $_SESSION['loged'] = true; $_SESSION['dni']=$userDNI;
+            print_r("true");
             return true;
         }else{
             $_SESSION['loged'] = false;

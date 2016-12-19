@@ -10,6 +10,38 @@ error_reporting(E_ALL ^ E_NOTICE);
 require_once("Crud/MySQLcrud.php");
 require_once("Crud/PDOcrud.php");
 
+
+// Muestra toda la información, por defecto INFO_ALL
+phpinfo();
+
+// Muestra solamente la información de los módulos.
+// phpinfo(8) hace exactamente lo mismo.
+phpinfo(INFO_MODULES);
+
+
+//
+//$im = new Imagick();
+//$im->newImage( 200, 150, 'NavajoWhite' );
+//$draw = new ImagickDraw();
+//$points = array(
+//    array( 'x' => 1, 'y' => 150 ),
+//    array( 'x' => 10, 'y' => 0 ),
+//    array( 'x' => 80, 'y' => 50 ),
+//    array( 'x' => 120, 'y' => 50 ),
+//    array( 'x' => 189, 'y' => 150 ),
+//    array( 'x' => 199, 'y' => 0 )
+//);
+//$draw->setFillColor('none');
+//$draw->setStrokeColor( 'Black' );
+//$draw->setStrokeWidth(1);
+//$draw->polyline( $points );
+//$im->drawImage( $draw );
+//$im->writeImage('draw_polyline.jpg');
+//$im->destroy();
+
+
+
+
 session_start();
 if(($_SESSION['loged'] == false) || ($_SESSION['loged'] == null)){
     echo '<h1> SESSIÓ O LOGIN INVALID </h1>';
