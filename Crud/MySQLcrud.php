@@ -80,6 +80,32 @@ class MySQLcrud{
      }
   }
 
+    function deleteNotaAsignatura($nomAsingatura, $DNIAlumne){
+//     if($this->BDconnection() == false){
+//       return "Sense conexió amb la BD";
+//       exit;
+//     }
+        try {
+            $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
+
+            $db->begin_transaction();
+
+            $setencia = 'DELETE FROM asignatures WHERE nom_asignatura = ? AND DNI_Alumne = ?';
+            $stmt = $db->prepare($setencia);
+            $stmt->bind_param('ss', $nomAsingatura, $DNIAlumne);
+
+            $stmt->execute();
+            $stmt->close();
+
+            $db->commit();
+            return "S'ha eliminat la informacio correctament";
+
+            $db->close();
+        } catch (Exception $e) {
+            $db->rollback();
+        }
+    }
+
   function updateAsignatura($nomAsingatura, $DNIAlumne, $Nota){
 //      if ($this->BDconnection() == false) {
 //          return "Sense conexió amb la BD";
@@ -90,9 +116,9 @@ class MySQLcrud{
 
           $db->begin_transaction();
 
-          $setencia = 'UPDATE asignatures SET DNI_Alumne = ?, Nota = ?, WHERE nom_asignatura = ?)';
-          $stmt = $db->prepare($setencia);
-          $stmt->bind_param('sis', $DNIAlumne, $Nota, $nomAsingatura);
+          $sentencia = 'UPDATE asignatures SET nom_asignatura = ?, Nota = ? WHERE DNI_Alumne = ?';
+          $stmt = $db->prepare($sentencia);
+          $stmt->bind_param('sis', $nomAsingatura, $Nota, $DNIAlumne);
 
           $stmt->execute();
           $stmt->close();
@@ -148,6 +174,37 @@ class MySQLcrud{
           $setencia = 'SELECT * FROM asignatures WHERE DNI_Alumne = ?';
           $stmt = $db->prepare($setencia);
           $stmt->bind_param('s', $DNIAlumne);
+
+          $stmt->execute();
+          $result = $stmt->get_result();
+
+          while($respostes = $result->fetch_assoc()){
+              $resposta[] = $respostes;
+          }
+          return $resposta;
+
+          $stmt->close();
+          $db->commit();
+
+          $db->close();
+        } catch (Exception $e) {
+          $db->rollback();
+      }
+  }
+
+  function getAsignaturaxAlum($DNIAlumne, $nomAsignatura){
+//      if ($this->BDconnection() == false) {
+//          return "Sense conexió amb la BD";
+//          exit;
+//      }
+      try {
+          $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
+
+          $db->begin_transaction();
+
+          $setencia = 'SELECT * FROM asignatures WHERE DNI_Alumne = ? AND nom_asignatura = ? ';
+          $stmt = $db->prepare($setencia);
+          $stmt->bind_param('ss', $DNIAlumne, $nomAsignatura);
 
           $stmt->execute();
           $result = $stmt->get_result();

@@ -13,6 +13,24 @@
 
 -Crear CRUD de PDO per alumnes// FET
 
--Grafic ImageMagick
+-Grafic ImageMagick:
+...
 
 -Crear amb MDL formularis i estil de pagina //FET
+
+
+PBL-PHP-MYSQLi
+- Gestio completa(cursos, asignatures, professors, alumnes)
+* crear operacions CRUD
+* MENU CASCADA- 1ºcurs, 2ºasignatures, 3ºalumnes
+* Como pone nota un profesor( el prof selecciona la asignatura que de , el alumno y la nota).
+
+
+**ASIGNATURES (secretaria selecciona asignatura y muestra la info) crud dentro de asignatures
+**PROF tiene asignado 1 o mas asignaturas
+
+** MINIMO 4 GRAFICOS**
+-grafico alumno con sus notas
+-grafico asignatura
+-graficocicle notas de les diverses asignatures(mitjana de notes)
+-grafico de tots el cicles(mitjanes de les seves notes)

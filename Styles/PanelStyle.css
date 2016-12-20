@@ -1,10 +1,12 @@
 .page-content {
     align-items: center;
     text-align: left;
+    width: 100%;
 
 }
 .mdl-layout__content{
-    padding: 50px;
+    padding-top: 50px;
+    padding-left: 40px;
 }
 
 th{
@@ -19,23 +21,40 @@ td{
     text-align: left;
 }
 
-
-.demo-card-wide.mdl-card {
-     width: 512px;
+.mdl-data-table{
+    float: left;
+    margin: 15px;
+}
+.mdl-card{
+    float: left;
+    margin: 15px;
 }
 
-.demo-card-wide > .mdl-card__title {
-    color: #fff;
-    height: 176px;
+.demo-card-wide{
+    float: left;
+    margin: 15px;
+    width: 39%;
 }
 
-.demo-card-wide > .mdl-card__menu {
-    color: #fff;
-}
 
-.mdl-card__media{
-    width: 220px;
-    height: 140px;
-    border: 0;
-    padding: 20px;
-}
+
+
+/*.demo-card-wide.mdl-card {*/
+     /*width: 512px;*/
+/*}*/
+
+/*.demo-card-wide > .mdl-card__title {*/
+    /*color: #fff;*/
+    /*height: 176px;*/
+/*}*/
+
+/*.demo-card-wide > .mdl-card__menu {*/
+    /*color: #fff;*/
+/*}*/
+
+/*.mdl-card__media{*/
+    /*width: 220px;*/
+    /*height: 140px;*/
+    /*border: 0;*/
+    /*padding: 20px;*/
+/*}*/
