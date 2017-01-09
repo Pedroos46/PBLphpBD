@@ -6,6 +6,7 @@ require_once("Controls/manualControlsBD.php");
 require_once("Logica/loginManager.php");
 require_once("Crud/MySQLcrud.php");
 require_once("Crud/PDOcrud.php");
+require_once("ImageMagick/graphs.php");
 
 session_start();
 $_SESSION['loged'] = false;
@@ -18,6 +19,9 @@ $Login = new loginManager($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 
 $MySQLi = new MySQLcrud($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 $PDO = new PDOcrud($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
+
+
+$Imagick = new ImageMagick($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 
 //$PDO->fillAlumne("47931590G","Roger","Pedrós","1234");
 //$PDO->fillAlumne("47931591G","Robert","Montoro","1234");

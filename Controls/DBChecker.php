@@ -10,7 +10,9 @@ class DBChecker{
   private $pass = '';
   private $bd = '';
   public $ErrorCatcher;
-
+    /*
+    *Esta función invoca o llama los metodos declarados en los objetos creados.
+    */
     function __construct($url, $user, $pass, $bd){
         $this->url=$url;
         $this->user=$user;
@@ -20,7 +22,9 @@ class DBChecker{
         $this->controls = new manualControlsBD($url, $user, $pass, $bd);
         $this->ErrorCatcher;
     }
-
+    /*
+*Esta funcion sera llamada cuando no hayan referencias a un objeto determinado o cuando algo finalice.
+*/
     function __destruct(){
     }
 
@@ -29,7 +33,9 @@ class DBChecker{
         $Run = array("BDconnectionCheck"=> $this->connectionCheck() ,"BDexist"  => $this->BDexist(), "TablesExist"  => $this->TablesExist(), 4 => $this->ErrorCatcher);
       return $Run;
     }
-
+    /*
+*Funcion que indica la conexion a la BD
+*/
     public function connectionCheck(){
       $mysqli = new mysqli($this->url, $this->user, $this->pass);
       if ($mysqli->connect_errno){
@@ -41,6 +47,9 @@ class DBChecker{
       $db->close();
     }
 
+    /*
+* Funcion que crea la BD e indica si existe o no.
+*/
     public function BDexist(){
       $mysqli = new mysqli($this->url, $this->user, $this->pass);
       $db_selected = mysqli_select_db($mysqli, $this->bd);
@@ -53,7 +62,9 @@ class DBChecker{
       }
       $db->close();
     }
-
+    /*
+    *Funcion que crea la tabla e indica si existe o no.
+    */
     public function TablesExist(){
       $mysqli = new mysqli($this->url, $this->user, $this->pass, $this->bd);
       $tables = array_column(mysqli_fetch_all($mysqli->query('SHOW TABLES')),0);

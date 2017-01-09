@@ -7,21 +7,23 @@ class manualControlsBD{
   private $user = '';
   private $pass = '';
   private $bd = '';
-
+    /*
+    *Esta función invoca o llama los metodos declarados en los objetos creados.
+    */
     function __construct($url, $user, $pass, $bd){
         $this->url=$url;
         $this->user=$user;
         $this->pass=$pass;
         $this->bd=$bd;
     }
-
+    /*
+    *Esta funcion sera llamada cuando no hayan referencias a un objeto determinado o cuando algo finalice.
+    */
     public function __destruct(){
     }
 
     /*
     *Esta funcion realiza la conexion con la BD, indicando con un mensaje si existe la conexion.
-    *
-    *
     */
 
     public function BDconnection(){

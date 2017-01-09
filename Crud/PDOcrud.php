@@ -11,6 +11,9 @@ class PDOcrud{
     private $pass = '';
     private $bd = '';
 
+    /*
+    *Esta función invoca o llama los metodos declarados en los objetos creados.
+    */
     function __construct($url, $user, $pass, $bd){
         $this->url=$url;
         $this->user=$user;
@@ -18,8 +21,13 @@ class PDOcrud{
         $this->bd=$bd;
     }
 
+    /*
+    *Esta funcion sera llamada cuando no hayan referencias a un objeto determinado o cuando algo finalice.
+    */
     function __destruct(){}
-/*Esta clase permite la conexion con la base de datos mediante la url, el usuario, y el password.*/
+
+
+    /*Esta clase permite la conexion con la base de datos mediante la url, el usuario, y el password.*/
     function BDconnection(){
         $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
         if ($db->connect_errno) {
@@ -29,13 +37,13 @@ class PDOcrud{
         $db->close();
     }
 
-    //CRUD ALUMNE
-//Esta funcion recibe parametros "$alumDNI, $alumNom, $alumContrasenya"
-
-/*Aqui realiza una conexion con la BD que necesita un log del usuario(alumno, profesor o secretaria con su respectivo password)
+//CRUD ALUMNE
+/*Esta funcion recibe parametros "$alumDNI, $alumNom, $alumContrasenya"
+*
+*Aqui realiza una conexion con la BD que necesita un log del usuario(alumno, profesor o secretaria con su respectivo password)
 * Realiza tambien la insercion de datos, si  todo esta correcto devolvera el mensaje, en caso contrario arrancara el "catch"
 * y con el rollback limpiara todos los datos que hemos ingresado hasta la funcion $bd->beginTransaction.
- * */
+* */
 
     function fillAlumne($alumDNI, $alumNom, $alumCognom, $alumContrasenya, $alumCurs){
         try {
@@ -62,9 +70,11 @@ class PDOcrud{
 
         }
     }
-//Esta funcion permite  eliminar la informacion del alumno mediante el DNI que funciona como identificador,
-// si todo esta correcto devolvera el mensaje, en caso contrario arrancara el "catch"
-// y con el rollback limpiara todos los datos que hemos ingresado hasta la funcion $bd->beginTransaction.
+    /*
+    *Esta funcion permite  eliminar la informacion del alumno mediante el DNI que funciona como identificador,
+    * si todo esta correcto devolvera el mensaje, en caso contrario arrancara el "catch"
+    * y con el rollback limpiara todos los datos que hemos ingresado hasta la funcion $bd->beginTransaction.
+    */
     function deleteAlumne($alumDNI){
         try {
             $bd = new PDO("mysql:host={$this->url};dbname={$this->bd}" , $this->user ,$this->pass );
@@ -87,9 +97,11 @@ class PDOcrud{
         }
     }
 
-// Esta funcion permite modificar informacion del alumno mediante su dni que es el identificador.
-// si todo esta correcto devolvera el mensaje, en caso contrario arrancara el "catch"
-// y con el rollback limpiara todos los datos que hemos ingresado hasta la funcion $bd->beginTransaction.
+    /*
+    *Esta funcion permite modificar informacion del alumno mediante su dni que es el identificador.
+    * si todo esta correcto devolvera el mensaje, en caso contrario arrancara el "catch"
+    *y con el rollback limpiara todos los datos que hemos ingresado hasta la funcion $bd->beginTransaction.
+    */
     function updateAlumne($alumDNI, $alumNom, $alumCognom, $alumContrasenya, $alumCurs){
 
         try {
@@ -116,9 +128,10 @@ class PDOcrud{
 
         }
     }
-// Esta funcion nos muestra toda la informacio del alumno que hemos indicado mediante el DNI que nos sirve como identificador.
-// si todo esta correcto devolvera la información , en caso contrario arrancara el "catch"
-// y con el rollback limpiara todos los datos que hemos ingresado hasta la funcion $bd->beginTransaction.
+    /* Esta funcion nos muestra toda la informacio del alumno que hemos indicado mediante el DNI que nos sirve como identificador.
+    * si todo esta correcto devolvera la información , en caso contrario arrancara el "catch"
+    *y con el rollback limpiara todos los datos que hemos ingresado hasta la funcion $bd->beginTransaction.
+    */
     function getAlumne($alumDNI){
         try {
             $bd = new PDO("mysql:host={$this->url};dbname={$this->bd}" , $this->user ,$this->pass );
@@ -142,6 +155,9 @@ class PDOcrud{
         }
     }
 
+    /*
+*Esta funcion nos muestra toda la informacio de todos los alumnos
+*/
     function getTotsAlumne(){
         try {
             $bd = new PDO("mysql:host={$this->url};dbname={$this->bd}" , $this->user ,$this->pass );
@@ -164,8 +180,9 @@ class PDOcrud{
         }
     }
 
-
-    //ORDERBYS
+    /*
+   *ORDERBYS
+   */
 
     function getTotsAlumneOrderbyname(){
         try {

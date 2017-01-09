@@ -18,7 +18,8 @@ class loginManager{
     function __destruct(){
     }
 
-    //Funcio que s'encarrega d'administrar el sistema de login
+    /*Funcio que s'encarrega d'administrar el sistema de login
+    */
     function loginCheck($userDNI, $pass){
         session_start();
 

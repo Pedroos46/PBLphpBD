@@ -22,6 +22,8 @@ $BDconf = ["localhost", "root", "root", "escola"];
 $MySQLi = new MySQLcrud($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 $PDO = new PDOcrud($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 
+$Imagick = new ImageMagick($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
+
 
 if($_SESSION['type'] == "Alumne"){
     $usuari = $PDO->getAlumne($_SESSION['dni']);

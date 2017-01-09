@@ -23,6 +23,8 @@ $BDconf = ["localhost", "root", "root", "escola"];
 $MySQLi = new MySQLcrud($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 $PDO = new PDOcrud($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 
+$Imagick = new ImageMagick($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
+
 //print_r($MySQLi->getAsignaturaAlum("47931590G"));
 //print_r($MySQLi->getAsignaturaProf($usuari[$asignatura]));
 

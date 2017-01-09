@@ -7,17 +7,23 @@ class MySQLcrud{
   private $user = '';
   private $pass = '';
   private $bd = '';
-
+    /*
+    *Esta función invoca o llama los metodos declarados en los objetos creados.
+    */
   function __construct($url, $user, $pass, $bd){
         $this->url=$url;
         $this->user=$user;
         $this->pass=$pass;
         $this->bd=$bd;
   }
-
+    /*
+    *Esta funcion sera llamada cuando no hayan referencias a un objeto determinado o cuando algo finalice.
+    */
   function __destruct(){}
-//Esta clase permite la conexion con la base de datos mediante la url, el usuario, y el password.
-  function BDconnection(){
+    /**
+     *Esta clase permite la conexion con la base de datos mediante la url, el usuario, y el password.
+     */
+    function BDconnection(){
         $db = new mysqli($this->url, $this->user, $this->pass);
         if ($db->connect_errno) {
             return false;
@@ -26,7 +32,9 @@ class MySQLcrud{
         $db->close();
   }
 
-    //CRUD PROFESOR permite realizar las funciones READ,READ,UPLOAD y DELETE
+    /**
+     *CRUD PROFESOR permite realizar las funciones READ,READ,UPLOAD y DELETE
+     */
 
     function fillProfesors($DNIProfesor, $NomProfesor, $CognomProfesor, $Asignatura, $Contrasenya){
      try {
@@ -50,7 +58,9 @@ class MySQLcrud{
      }
   }
 
-//Esta funcion permite borrar profesores por DNI_Profesor
+    /**
+     *Esta funcion permite borrar profesores por DNI_Profesor
+     */
 
   function deleteProfesor($DNIProfesor){
       try {
@@ -73,8 +83,9 @@ class MySQLcrud{
          $db->rollback();
      }
   }
-//Esta funcion permite modificar al profesor sus datos, las asignaturas que realiza.
-
+    /**
+     *Esta funcion permite modificar al profesor sus datos, las asignaturas que realiza.
+     */
   function updateProfesor($DNIProfesor, $NomProfesor, $CognomProfesor, $Asignatura, $Contrasenya){
       try {
           $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
@@ -96,8 +107,9 @@ class MySQLcrud{
           $db->rollback();
       }
   }
-//seleccion al profesor mediante su DNI
-
+    /**
+     *seleccion al profesor mediante su DNI
+     */
   function getProfesor($DNI_Profesor){
       try {
           $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
@@ -122,8 +134,9 @@ class MySQLcrud{
           $db->rollback();
       }
   }
-    //seleccion de tots els profesors
-
+    /*
+     *seleccio de tots els profesors
+    */
     function getTotsProfesor(){
       try {
           $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
@@ -151,7 +164,9 @@ class MySQLcrud{
   }
 
 
-  //CRUD CURS
+    /*
+    *CRUD CURS
+    */
   function fillCurs($DNIProfesor, $NomCurs){
       try {
           $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
@@ -267,6 +282,10 @@ class MySQLcrud{
       }
   }
 
+    /*
+  *esta funcion permite ver todos los cursos.
+  */
+
   function getTotsCursos(){
       try {
           $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
@@ -291,8 +310,10 @@ class MySQLcrud{
           $db->rollback();
       }
   }
-  //CRUD ASGINATURES
-    //Esta funcion se encarga por asi decirlo de llenar los campos con los valores que ingresamos dentro de asignatures.
+/*
+* CRUD ASGINATURES
+*Esta funcion se encarga por asi decirlo de llenar los campos con los valores que ingresamos dentro de asignatures.
+*/
   function fillAsignatura($nomAsingatura, $DNIAlumne, $Nota, $Curs){
       try {
           $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
@@ -314,6 +335,9 @@ class MySQLcrud{
       }
   }
 
+    /*
+  *esta funcion permite agregar  asignatura  mediante su nombre.
+  */
   function creaAsignatura($nomAsingatura, $Curs){
       try {
           $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
@@ -334,7 +358,9 @@ class MySQLcrud{
           $db->rollback();
       }
   }
-//esta funcion borra la asignatura indicada mediante su nombre.
+    /*
+    *esta funcion borra la asignatura indicada mediante su nombre.
+    */
 
   function deleteAsignatura($nomAsingatura){
       try {
@@ -356,7 +382,10 @@ class MySQLcrud{
           $db->rollback();
       }
   }
-//Esta funcion se encarga de borrar la nota de la asignatura del alumno indicados por "$nom_asignatura" y "$DNI_Alumne".
+    /*
+    *Esta funcion se encarga de borrar la nota de la asignatura del alumno
+    *indicados por "$nom_asignatura" y "$DNI_Alumne".
+    */
   function deleteNotaAsignatura($nomAsingatura, $DNIAlumne){
       try {
           $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
@@ -378,8 +407,11 @@ class MySQLcrud{
       }
   }
 
-//esta funcion se encarga de modificar los campos(nom_asignatura, Nota) de la tabla "asignatures"
-//mediante el DNI_Alumne como identificador.
+    /*
+    *esta funcion se encarga de modificar los campos(nom_asignatura, Nota) de la tabla "asignatures"
+    *mediante el DNI_Alumne como identificador.
+    *
+    */
   function updateAsignatura($nomAsingatura, $DNIAlumne, $Nota, $Curs){
       try {
           $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
@@ -421,8 +453,9 @@ class MySQLcrud{
           $db->rollback();
       }
   }
-//Esta funcion permite seleccionar asignatura por su nombre
-
+    /*
+    *Esta funcion permite seleccionar asignatura por su nombre
+    */
   function getAsignaturaProf($nomAsignatura){
       try {
           $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
@@ -447,7 +480,9 @@ class MySQLcrud{
           $db->rollback();
       }
   }
-    //esta funcion permite seleccionar todas las asignaturas
+   /*
+   *esta funcion permite seleccionar todas las asignaturas
+   */
   function getTotesAsignatures(){
       try {
           $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
@@ -472,7 +507,9 @@ class MySQLcrud{
       }
   }
 
-    //esta funcion permite seleccionar todas las asignaturas de un alumno mediante su DNI.
+  /*
+  *esta funcion permite seleccionar todas las asignaturas de un alumno mediante su DNI.
+  */
   function getAsignaturaAlum($DNIAlumne){
       try {
           $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
@@ -498,7 +535,9 @@ class MySQLcrud{
           $db->rollback();
       }
   }
-//esta funcion permite ver mediante el DNI del alumno las asignaturas que cursa y nombrarlas
+    /*
+    *esta funcion permite ver mediante el DNI del alumno las asignaturas que cursa y nombrarlas
+    */
   function getAsignaturaxAlum($DNIAlumne, $nomAsignatura){
       try {
           $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
