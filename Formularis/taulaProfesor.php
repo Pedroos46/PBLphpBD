@@ -5,6 +5,7 @@ echo '<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable 
             echo '<th>DNI Alumne</th>';
             echo '<th>Alumne</th>';
             echo '<th>Nota</th>';
+            echo '<th>Curs</th>';
         echo '</tr>';
     echo '</thead>';
 echo '<tbody>';

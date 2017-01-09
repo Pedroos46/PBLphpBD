@@ -103,7 +103,7 @@ $profesors = $MySQLi->getTotsProfesor();
                         echo $MySQLi->fillCurs($_POST['prof'], $_POST['curs']);
                     }
 
-                    if(($_POST['curs'])== "Actualitzar"){
+                    if(($_POST['options'])== "Actualitzar"){
                         echo $MySQLi->updateCurs($_POST['prof'], $_POST['curs']);
                     }
 

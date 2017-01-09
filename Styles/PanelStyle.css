@@ -33,28 +33,6 @@ td{
 .demo-card-wide{
     float: left;
     margin: 15px;
-    width: 39%;
+    width: 33%;
 }
 
-
-
-
-/*.demo-card-wide.mdl-card {*/
-     /*width: 512px;*/
-/*}*/
-
-/*.demo-card-wide > .mdl-card__title {*/
-    /*color: #fff;*/
-    /*height: 176px;*/
-/*}*/
-
-/*.demo-card-wide > .mdl-card__menu {*/
-    /*color: #fff;*/
-/*}*/
-
-/*.mdl-card__media{*/
-    /*width: 220px;*/
-    /*height: 140px;*/
-    /*border: 0;*/
-    /*padding: 20px;*/
-/*}*/

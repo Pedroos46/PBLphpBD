@@ -49,6 +49,7 @@ class MySQLcrud{
          $db->rollback();
      }
   }
+
 //Esta funcion permite borrar profesores por DNI_Profesor
 
   function deleteProfesor($DNIProfesor){
@@ -312,6 +313,27 @@ class MySQLcrud{
           $db->rollback();
       }
   }
+
+  function creaAsignatura($nomAsingatura, $Curs){
+      try {
+          $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
+          $db->begin_transaction();
+
+          $setencia = 'INSERT INTO asignatures(nom_asignatura, curs) VALUES (?, ?)';
+          $stmt = $db->prepare($setencia);
+          $stmt->bind_param('ss', $nomAsingatura, $Curs);
+
+          $stmt->execute();
+          $stmt->close();
+
+          $db->commit();
+          return "S'ha insertat la informacio correctament";
+
+          $db->close();
+      } catch (Exception $e) {
+          $db->rollback();
+      }
+  }
 //esta funcion borra la asignatura indicada mediante su nombre.
 
   function deleteAsignatura($nomAsingatura){
@@ -355,6 +377,7 @@ class MySQLcrud{
           $db->rollback();
       }
   }
+
 //esta funcion se encarga de modificar los campos(nom_asignatura, Nota) de la tabla "asignatures"
 //mediante el DNI_Alumne como identificador.
   function updateAsignatura($nomAsingatura, $DNIAlumne, $Nota, $Curs){
@@ -365,6 +388,27 @@ class MySQLcrud{
           $sentencia = 'UPDATE asignatures SET nom_asignatura = ?, nota = ? , curs = ? WHERE DNI_Alumne = ?';
           $stmt = $db->prepare($sentencia);
           $stmt->bind_param('sis', $nomAsingatura, $Nota, $Curs, $DNIAlumne);
+
+          $stmt->execute();
+          $stmt->close();
+
+          $db->commit();
+          return "S'ha actualitzat la informacio correctament";
+
+          $db->close();
+      } catch (Exception $e) {
+          $db->rollback();
+      }
+  }
+
+  function updateSimpleAsignatura($nomAsingatura, $Curs){
+      try {
+          $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
+          $db->begin_transaction();
+
+          $sentencia = 'UPDATE asignatures SET curs = ? WHERE  nom_asignatura = ?';
+          $stmt = $db->prepare($sentencia);
+          $stmt->bind_param('ss', $Curs, $nomAsingatura);
 
           $stmt->execute();
           $stmt->close();

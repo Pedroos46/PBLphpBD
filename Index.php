@@ -12,7 +12,7 @@ $_SESSION['loged'] = false;
 
 $BDconf = ["localhost", "root", "root", "escola"];
 
-$Check = new DBChecker($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
+//$Check = new DBChecker($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 $Controls = new manualControlsBD($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 $Login = new loginManager($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 
@@ -79,7 +79,7 @@ $PDO = new PDOcrud($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
                       if(isset($_POST['username']) && isset($_POST['userpass']) ){
                           echo '<div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>';
                           if($Login->loginCheck($_POST['username'],$_POST['userpass']) == true){
-                              header("Location: http://localhost/daw2/php/PBLphpBD/Panel.php");
+                              echo "Login correcte";
                           }else{
                               echo "Error d'usuari o contrasenya";
                           }

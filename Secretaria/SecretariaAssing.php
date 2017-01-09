@@ -17,12 +17,10 @@ if(($_SESSION['loged'] == false) || ($_SESSION['loged'] == null)){
 }
 
 $BDconf = ["localhost", "root", "root", "escola"];
-$PDO = new PDOcrud($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 $MySQLi = new MySQLcrud($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 
-$alumnes = $PDO->getTotsAlumne();
-$DataCursos = $MySQLi->getTotsCursos();
-
+$Cursos = $MySQLi->getTotsCursos();
+$Asignatures = $MySQLi->getTotesAsignatures();
 
 ?>
 
@@ -49,7 +47,7 @@ $DataCursos = $MySQLi->getTotsCursos();
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
                 <!-- Title -->
-                <span class="mdl-layout-title">Secretaria - Alumnes</span>
+                <span class="mdl-layout-title">Secretaria - Cursos</span>
                 <!-- Add spacer, to align navigation to the right -->
                 <div class="mdl-layout-spacer"></div>
 
@@ -60,29 +58,26 @@ $DataCursos = $MySQLi->getTotsCursos();
                 <!--GENERADOR TAULA-->
                 <?php
 
-                include("../Formularis/taulaSecretariaAlum.php");
-                $iteracionsMax = count($alumnes);
+                include("../Formularis/taulaSecretariaAsing.php");
+                $iteracionsMax = count($Asignatures);
                 $i = 0;
                 while($iteracionsMax > $i){
                     echo '<tr>';
-                    echo '<td>' . $alumnes[$i][alumID] . '</td>';
-                    echo '<td>' . $alumnes[$i][alumDNI] . '</td>';
-                    echo '<td>' . $alumnes[$i][nom] . ' ' . $alumnes[$i][cognom] . '</td>';
-                    echo '<td>' . $alumnes[$i][curs] . '</td>';
-                    echo '<td>' . $alumnes[$i][contrasenya] . '</td>';
+                    echo '<td>' . $Asignatures[$i][nom_asignatura] . '</td>';
+                    echo '<td>' . $Asignatures[$i][curs] . '</td>';
                     echo '</tr>';
                     $i++;
                 }
                 echo '</tbody>';
                 echo '</table>';
 
-                include("../Formularis/formulariSecretariaAlum.php");
+                include("../Formularis/formulariSecretariaAsign.php");
 
                 echo '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">';
                 echo '<input class="mdl-textfield__input" id="curs" name="curs" value="" type="text" readonly tabIndex="-1" data-val="BLR"/>';
                 echo '<label class="mdl-textfield__label" for="country">Curs</label>';
                 echo '<ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="curs">';
-                foreach ($DataCursos as $data){
+                foreach ($Cursos as $data){
                     echo '<li class="mdl-menu__item">'.$data[nom_curs]. '</li>';
                 }
                 echo '</ul>';
@@ -98,18 +93,18 @@ $DataCursos = $MySQLi->getTotsCursos();
                 echo '</div>';
                 echo '</div>';
 
-                if(isset($_POST['alumdni'])){
+                if(isset($_POST['curs'])){
                     if(($_POST['options'])== "Eliminar"){
-                        echo $PDO->deleteAlumne($_POST['alumdni']);
+                        echo $MySQLi->deleteAsignatura($_POST['curs']);
                     }
                 }
-                if(isset($_POST['alumdni']) && isset($_POST['nom']) && isset($_POST['cognom']) && isset($_POST['contra'])&& isset($_POST['curs'])){
+                if(isset($_POST['curs']) && isset($_POST['asign'])){
                     if(($_POST['options'])== "Introduir"){
-                        echo $PDO->fillAlumne($_POST['alumdni'], $_POST['nom'], $_POST['cognom'], $_POST['contra'], $_POST['curs']);
+                        echo $MySQLi->creaAsignatura($_POST['asign'], $_POST['curs']);
                     }
 
                     if(($_POST['options'])== "Actualitzar"){
-                        echo $PDO->updateAlumne($_POST['alumdni'], $_POST['nom'], $_POST['cognom'], $_POST['contra'], $_POST['curs']);
+                        echo $MySQLi->updateSimpleAsignatura($_POST['asign'], $_POST['curs']);
                     }
 
                 } else{

@@ -13,6 +13,8 @@ require_once("../Crud/MySQLcrud.php");
 session_start();
 if(($_SESSION['loged'] == false) || ($_SESSION['loged'] == null)){
     echo '<h1> SESSIÓ O LOGIN INVALID </h1>';
+    echo '<img src="http://i.qkme.me/3q490r.jpg" alt="Mountain View" >';
+    echo '<img src="https://s-media-cache-ak0.pinimg.com/564x/c3/a0/3c/c3a03c07eebed8c70fffdeb8e66f5d0b.jpg" alt="Mountain View" >';
     exit;
 }
 

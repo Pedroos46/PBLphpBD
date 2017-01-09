@@ -32,9 +32,11 @@ class PDOcrud{
     //CRUD ALUMNE
 //Esta funcion recibe parametros "$alumDNI, $alumNom, $alumContrasenya"
 
-//Aqui realiza una conexion con la BD que necesita un log del usuario(alumno, profesor o secretaria con su respectivo password)
-// Realiza tambien la insercion de datos, si  todo esta correcto devolvera el mensaje, en caso contrario arrancara el "catch"
-// y con el rollback limpiara todos los datos que hemos ingresado hasta la funcion $bd->beginTransaction.
+/*Aqui realiza una conexion con la BD que necesita un log del usuario(alumno, profesor o secretaria con su respectivo password)
+* Realiza tambien la insercion de datos, si  todo esta correcto devolvera el mensaje, en caso contrario arrancara el "catch"
+* y con el rollback limpiara todos los datos que hemos ingresado hasta la funcion $bd->beginTransaction.
+ * */
+
     function fillAlumne($alumDNI, $alumNom, $alumCognom, $alumContrasenya, $alumCurs){
         try {
             $bd = new PDO("mysql:host={$this->url};dbname={$this->bd}" , $this->user ,$this->pass );

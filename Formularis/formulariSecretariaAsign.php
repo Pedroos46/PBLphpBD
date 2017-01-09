@@ -10,10 +10,10 @@ echo '</div>';
 
 echo'<div class="mdl-card__supporting-text">';
 
-echo "<form  id='login' action='../Secretaria/SecretariaCurs.php' method='post' accept-charset='UTF-8'>";
+echo "<form  id='login' action='../Secretaria/SecretariaAssing.php' method='post' accept-charset='UTF-8'>";
 echo '<div class="mdl-textfield mdl-js-textfield">';
-echo'<input class="mdl-textfield__input" type="text" name="curs" id="curs" autocomplete="off" />';
-echo'<label class="mdl-textfield__label" for="curs">Curs</label>';
+echo'<input class="mdl-textfield__input" type="text" name="asign" id="asign" autocomplete="off" />';
+echo'<label class="mdl-textfield__label" for="asign">Asignatura</label>';
 echo'</div>';
 
 

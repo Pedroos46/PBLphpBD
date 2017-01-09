@@ -26,7 +26,7 @@ class loginManager{
         print_r($alumne = $this->PDO->getAlumne($userDNI));
 
 
-        if ($userDNI == "secretaria"){
+        if (($userDNI == "secretaria") & ($pass == "sec")){
             $_SESSION['loged'] = true; $_SESSION['dni']="secretaria";
             $_SESSION['type'] = "secretaria";
             header("Location: http://localhost/daw2/php/PBLphpBD/secretaria.php");
@@ -39,20 +39,26 @@ class loginManager{
         }
 
         if(count($profesor) > 2){
-            $_SESSION['type'] = "Profesor";
-        }
-        if(count($alumne) > 2){
-            $_SESSION['type'] = "Alumne";
-        }
+            if(($alumne[contrasenya] || $profesor[contrasenya]) == $pass){
+                $_SESSION['loged'] = true; $_SESSION['dni']=$userDNI;
+                $_SESSION['type'] = "Profesor";
 
-        if(($alumne[contrasenya] || $profesor[contrasenya]) == $pass){
-            $_SESSION['loged'] = true; $_SESSION['dni']=$userDNI;
-            print_r("true");
-            return true;
-        }else{
-            $_SESSION['loged'] = false;
-            return false;
-        }
+                header("Location: http://localhost/daw2/php/PBLphpBD/panelProf.php");
+                return true;
+            } else{$_SESSION['loged'] = false;}
+        } else{$_SESSION['loged'] = false;}
+
+        if(count($alumne) > 2){
+            if(($alumne[contrasenya] || $profesor[contrasenya]) == $pass){
+                $_SESSION['loged'] = true; $_SESSION['dni']=$userDNI;
+                $_SESSION['type'] = "Alumne";
+
+                header("Location: http://localhost/daw2/php/PBLphpBD/panelAlum.php");
+                return true;
+            } else{$_SESSION['loged'] = false;}
+        } else{$_SESSION['loged'] = false;}
+
+
     }
 
 }
