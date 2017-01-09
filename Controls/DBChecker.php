@@ -1,7 +1,7 @@
 <?php
 /**
-  * @author Roger Pedrós Villorbina
-  */
+ * @author Roger Pedrós Villorbina, Aldair Ñique del Aguila, Alejandro Rodriguez Garcia.
+ */
 require_once("Controls/manualControlsBD.php");
 
 class DBChecker{

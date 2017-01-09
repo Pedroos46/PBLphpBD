@@ -46,6 +46,8 @@ if($_SESSION['type'] == "Alumne"){
     <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
     <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 
+    <link rel="stylesheet" href="https://cdn.rawgit.com/CreativeIT/getmdl-select/master/getmdl-select.min.css">
+    <script defer src="https://cdn.rawgit.com/CreativeIT/getmdl-select/master/getmdl-select.min.js"></script>
     <!--Local Style-->
     <link rel="stylesheet" type="text/css" href="Styles/PanelStyle.css">
 
@@ -140,4 +142,4 @@ if($_SESSION['type'] == "Alumne"){
 </body>
 </html>
 
-}
+

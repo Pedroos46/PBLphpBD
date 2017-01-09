@@ -21,6 +21,7 @@ $PDO = new PDOcrud($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 
 //$PDO->fillAlumne("47931590G","Roger","Pedrós","1234");
 //$PDO->fillAlumne("47931591G","Robert","Montoro","1234");
+
 //$MySQLi->fillAsignatura("Matematiques","47931590G", 7);
 //$MySQLi->fillAsignatura("Matematiques","47931591G", 2);
 //$MySQLi->fillAsignatura("Ciencies","47931590G", 7);
@@ -29,10 +30,7 @@ $PDO = new PDOcrud($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 //$MySQLi->fillProfesors("47931595G","Jordi","Binefa","Llengua","1234");
 //$MySQLi->fillProfesors("47931596G","Hector","Lopez","Ciencies","1234");
 
-$Run = array();
-foreach ($Check->initCheck()as $val ) {
-    array_push($Run,$val);
-}
+
 ?>
 <html>
   <head>
@@ -42,6 +40,9 @@ foreach ($Check->initCheck()as $val ) {
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
       <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
       <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+      <link rel="stylesheet" href="https://cdn.rawgit.com/CreativeIT/getmdl-select/master/getmdl-select.min.css">
+      <script defer src="https://cdn.rawgit.com/CreativeIT/getmdl-select/master/getmdl-select.min.js"></script>
 
       <!--Local Style-->
       <link rel="stylesheet" type="text/css" href="Styles/IndexStyle.css">
@@ -86,17 +87,6 @@ foreach ($Check->initCheck()as $val ) {
                   ?>
               </div>
           </div>
-          <?php
-          echo '<ul class="demo-list-item mdl-list">';
-          foreach ($Run as $val ) {
-              echo '<li class="mdl-list__item">';
-              echo '<span class="mdl-list__item-primary-content">';
-              echo $val;
-              echo '</span>';
-              echo '</li>';
-          }
-          echo '</ul>';
-          ?>
       </main>
   </div>
 

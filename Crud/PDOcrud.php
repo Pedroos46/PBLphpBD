@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Roger Pedrós Villorbina
- * Date: 12/12/2016
- * Time: 23:31
+ * User: Roger Pedrós Villorbina, Aldair Ñique del Aguila, Alejandro Rodriguez Garcia.
+ * Date: 02/01/2017
+ * Time: 20:00
  */
 class PDOcrud{
     private $url = '';
@@ -19,7 +19,7 @@ class PDOcrud{
     }
 
     function __destruct(){}
-
+/*Esta clase permite la conexion con la base de datos mediante la url, el usuario, y el password.*/
     function BDconnection(){
         $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
         if ($db->connect_errno) {
@@ -30,22 +30,23 @@ class PDOcrud{
     }
 
     //CRUD ALUMNE
+//Esta funcion recibe parametros "$alumDNI, $alumNom, $alumContrasenya"
 
-    function fillAlumne($alumDNI, $alumNom, $alumCognom, $alumContrasenya){
-//        if($this->BDconnection() == false){
-//            echo "Sense conexió amb la BD.";
-//            exit;
-//        }
+//Aqui realiza una conexion con la BD que necesita un log del usuario(alumno, profesor o secretaria con su respectivo password)
+// Realiza tambien la insercion de datos, si  todo esta correcto devolvera el mensaje, en caso contrario arrancara el "catch"
+// y con el rollback limpiara todos los datos que hemos ingresado hasta la funcion $bd->beginTransaction.
+    function fillAlumne($alumDNI, $alumNom, $alumCognom, $alumContrasenya, $alumCurs){
         try {
             $bd = new PDO("mysql:host={$this->url};dbname={$this->bd}" , $this->user ,$this->pass );
 
             $bd->beginTransaction();
 
-            $sentencia = $bd->prepare("INSERT INTO alumne (alumDNI, nom, cognom, contrasenya) VALUES (:dni, :nom, :cognom, :contrasenya)");
+            $sentencia = $bd->prepare("INSERT INTO alumne (alumDNI, nom, cognom, contrasenya, curs) VALUES (:dni, :nom, :cognom, :contrasenya, :curs)");
             $sentencia->bindParam(':dni', $alumDNI);
             $sentencia->bindParam(':nom', $alumNom);
             $sentencia->bindParam(':cognom', $alumCognom);
             $sentencia->bindParam(':contrasenya', $alumContrasenya);
+            $sentencia->bindParam(':curs', $alumCurs);
             $sentencia->execute();
 
             $bd->commit();
@@ -59,12 +60,10 @@ class PDOcrud{
 
         }
     }
-
+//Esta funcion permite  eliminar la informacion del alumno mediante el DNI que funciona como identificador,
+// si todo esta correcto devolvera el mensaje, en caso contrario arrancara el "catch"
+// y con el rollback limpiara todos los datos que hemos ingresado hasta la funcion $bd->beginTransaction.
     function deleteAlumne($alumDNI){
-//        if($this->BDconnection() == false){
-//            echo "Sense conexió amb la BD";
-//            exit;
-//        }
         try {
             $bd = new PDO("mysql:host={$this->url};dbname={$this->bd}" , $this->user ,$this->pass );
 
@@ -86,21 +85,22 @@ class PDOcrud{
         }
     }
 
-    function updateAlumne($alumDNI, $alumNom, $alumCognom, $alumContrasenya){
-//        if ($this->BDconnection() == false) {
-//            echo "Sense conexió amb la BD";
-//            exit;
-//        }
+// Esta funcion permite modificar informacion del alumno mediante su dni que es el identificador.
+// si todo esta correcto devolvera el mensaje, en caso contrario arrancara el "catch"
+// y con el rollback limpiara todos los datos que hemos ingresado hasta la funcion $bd->beginTransaction.
+    function updateAlumne($alumDNI, $alumNom, $alumCognom, $alumContrasenya, $alumCurs){
+
         try {
             $bd = new PDO("mysql:host={$this->url};dbname={$this->bd}" , $this->user ,$this->pass );
 
             $bd->beginTransaction();
 
-            $sentencia = $bd->prepare("UPDATE alumne SET :nom, :cognom, :contrasenya WHERE alumDNI = :dni");
+            $sentencia = $bd->prepare("UPDATE alumne SET nom = :nom, cognom = :cognom, contrasenya = :contrasenya, curs = :curs WHERE alumDNI = :dni");
             $sentencia->bindParam(':dni', $alumDNI);
             $sentencia->bindParam(':nom', $alumNom);
             $sentencia->bindParam(':cognom', $alumCognom);
             $sentencia->bindParam(':contrasenya', $alumContrasenya);
+            $sentencia->bindParam(':curs', $alumCurs);
             $sentencia->execute();
 
             $bd->commit();
@@ -114,12 +114,10 @@ class PDOcrud{
 
         }
     }
-
+// Esta funcion nos muestra toda la informacio del alumno que hemos indicado mediante el DNI que nos sirve como identificador.
+// si todo esta correcto devolvera la información , en caso contrario arrancara el "catch"
+// y con el rollback limpiara todos los datos que hemos ingresado hasta la funcion $bd->beginTransaction.
     function getAlumne($alumDNI){
-//        if ($this->BDconnection() == false) {
-//            echo "Sense conexió amb la BD";
-//            exit;
-//        }
         try {
             $bd = new PDO("mysql:host={$this->url};dbname={$this->bd}" , $this->user ,$this->pass );
 
@@ -129,6 +127,75 @@ class PDOcrud{
             $sentencia->bindParam(':dni', $alumDNI);
             $sentencia->execute();
             $resposta=$sentencia->fetch(PDO::FETCH_ASSOC);
+            return $resposta;
+
+            $bd->commit();
+
+            $sentencia = null;
+            $bd = null;
+        } catch ( PDOException $e ) {
+            return "¡Error!: " . $e -> getMessage ();
+            $bd->rollBack();
+
+        }
+    }
+
+    function getTotsAlumne(){
+        try {
+            $bd = new PDO("mysql:host={$this->url};dbname={$this->bd}" , $this->user ,$this->pass );
+
+            $bd->beginTransaction();
+
+            $sentencia = $bd->prepare("SELECT * FROM alumne");
+            $sentencia->execute();
+            $resposta=$sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resposta;
+
+            $bd->commit();
+
+            $sentencia = null;
+            $bd = null;
+        } catch ( PDOException $e ) {
+            return "¡Error!: " . $e -> getMessage ();
+            $bd->rollBack();
+
+        }
+    }
+
+
+    //ORDERBYS
+
+    function getTotsAlumneOrderbyname(){
+        try {
+            $bd = new PDO("mysql:host={$this->url};dbname={$this->bd}" , $this->user ,$this->pass );
+
+            $bd->beginTransaction();
+
+            $sentencia = $bd->prepare("SELECT * FROM alumne ORDER BY nom");
+            $sentencia->execute();
+            $resposta=$sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resposta;
+
+            $bd->commit();
+
+            $sentencia = null;
+            $bd = null;
+        } catch ( PDOException $e ) {
+            return "¡Error!: " . $e -> getMessage ();
+            $bd->rollBack();
+
+        }
+    }
+
+    function getTotsAlumneOrderbyCurs(){
+        try {
+            $bd = new PDO("mysql:host={$this->url};dbname={$this->bd}" , $this->user ,$this->pass );
+
+            $bd->beginTransaction();
+
+            $sentencia = $bd->prepare("SELECT * FROM alumne ORDER BY curs");
+            $sentencia->execute();
+            $resposta=$sentencia->fetchAll(PDO::FETCH_ASSOC);
             return $resposta;
 
             $bd->commit();

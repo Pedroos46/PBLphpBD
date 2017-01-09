@@ -9,6 +9,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 
 require_once("Crud/MySQLcrud.php");
 require_once("Crud/PDOcrud.php");
+require_once("Controls/DBChecker.php");
 
 session_start();
 if(($_SESSION['loged'] == false) || ($_SESSION['loged'] == null)){
@@ -21,8 +22,7 @@ $BDconf = ["localhost", "root", "root", "escola"];
 $MySQLi = new MySQLcrud($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 $PDO = new PDOcrud($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 
-//print_r($MySQLi->getAsignaturaAlum("47931590G"));
-//print_r($MySQLi->getAsignaturaProf($usuari[$asignatura]));
+$Check = new DBChecker($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 
 ?>
 
@@ -35,8 +35,11 @@ $PDO = new PDOcrud($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
     <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
     <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 
+    <link rel="stylesheet" href="https://cdn.rawgit.com/CreativeIT/getmdl-select/master/getmdl-select.min.css">
+    <script defer src="https://cdn.rawgit.com/CreativeIT/getmdl-select/master/getmdl-select.min.js"></script>
+
     <!--Local Style-->
-    <link rel="stylesheet" type="text/css" href="Styles/PanelStyle.css">
+    <link rel="stylesheet" type="text/css" href="Styles/SecretariaSytle.css">
 
 </head>
 
@@ -57,59 +60,70 @@ $PDO = new PDOcrud($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
         </header>
         <main class="mdl-layout__content">
             <div class="page-content">
-                <!--GENERADOR TAULA-->
-                <?php
-                //include();
-                if($_SESSION['type'] == "Profesor"){//OSIFUI QUAN S'HAN DE CARREGAR TOTS ELS ALUMNES D'UNA ASIGNATURA
-                    include("Formularis/taulaProfesor.php");
-                    $iteracionsMax = count($asig);
-                    $i = 0;
-                    while($iteracionsMax > $i){
-                        $nomAlum = $PDO->getAlumne($asig[$i][DNI_Alumne]);
-                        echo '<tr>';
-                        echo '<td>' . $asig[$i][DNI_Alumne] . '</td>';
-                        echo '<td>' . $nomAlum[nom] . ' ' . $nomAlum[cognom] . '</td>';
-                        echo '<td>' . $asig[$i][Nota] . '</td>';
-                        echo '</tr>';
-                        $i++;
-                    }
-                    echo '</tbody>';
-                    echo '</table>';
 
-                    include("Formularis/formulariProfesor.php");
-                    if(isset($_POST['alumdni']) && isset($_POST['aign']) && isset($_POST['nota']) && isset($_POST['options'])){
-                        if(($_POST['options'])== "Introduir"){
-                            echo $MySQLi->fillAsignatura($_POST['aign'], $_POST['alumdni'], $_POST['nota']);
-                        }
-                        if(($_POST['options'])== "Eliminar"){
-                            echo $MySQLi->deleteNotaAsignatura($_POST['aign'], $_POST['alumdni']);
-                        }
-                        if(($_POST['options'])== "Actualitzar"){
-                            echo $MySQLi->updateAsignatura($_POST['aign'], $_POST['alumdni'], $_POST['nota']);
-                        }
+                <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-card--expand">
+                        <h2 class="mdl-card__title-text">Revisió o Restabliment de la BD</h2>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            Fes-ho.
+                        </a>
+                    </div>
+                </div>
 
-                    } else{
-                        echo 'Falta introduir dades';
-                    }
-
-                }
-
-                if($_SESSION['type'] == "Alumne"){ //OSIFUI QUAN S'HAN DE CARREGAR TOTES LES ASIGNATURES D'UN ALUMNE
-                    include("Formularis/taulaAlumne.php");
-                    $iteracionsMax = count($asig);
-                    $i = 0;
-                    while($iteracionsMax > $i){
-                        echo '<tr>';
-                        echo '<td>' . $asig[$i][DNI_Alumne] . '</td>';
-                        echo '<td>' . $asig[$i][nom_asignatura] . '</td>';
-                        echo '<td>' . $asig[$i][Nota] . '</td>';
-                        echo '</tr>';
-                        $i++;
-                    }
-                    echo '</tbody>';
-                    echo '</table>';
-                }
-                ?>
+                <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-card--expand">
+                        <h2 class="mdl-card__title-text">Alumnes</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        Crear, actualizar i elimminar els Alumnes de l'escola.
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a href="http://localhost/daw2/php/PBLphpBD/Secretaria/SecretariaAlum.php" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            Anar-hi.
+                        </a>
+                    </div>
+                </div>
+                <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-card--expand">
+                        <h2 class="mdl-card__title-text">Profesors</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        Crear, actualizar i elimminar els Profesors de l'escola.
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a href="http://localhost/daw2/php/PBLphpBD/Secretaria/SecretariaProf.php" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            Anar-hi.
+                        </a>
+                    </div>
+                </div>
+                <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-card--expand">
+                        <h2 class="mdl-card__title-text">Cursos</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        Crear, actualizar i elimminar cursos de l'escola.
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a href="http://localhost/daw2/php/PBLphpBD/Secretaria/SecretariaCurs.php" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            Anar-hi.
+                        </a>
+                    </div>
+                </div>
+                <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-card--expand">
+                        <h2 class="mdl-card__title-text">Assignatures</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        Crear, actualizar i elimminar assignatures de l'escola.
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a href="http://localhost/daw2/php/PBLphpBD/Secretaria/SecretariaAssing.php" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            Anar-hi.
+                        </a>
+                    </div>
+                </div>
 
 
                 <div class="demo-card-wide mdl-card mdl-shadow--2dp">

@@ -1,8 +1,7 @@
 <?php
 /**
-* @author Roger Pedrós Villorbina
-*/
-
+ * @author Roger Pedrós Villorbina, Aldair Ñique del Aguila, Alejandro Rodriguez Garcia.
+ */
 class manualControlsBD{
   private $url = '';
   private $user = '';
@@ -19,6 +18,12 @@ class manualControlsBD{
     public function __destruct(){
     }
 
+    /*
+    *Esta funcion realiza la conexion con la BD, indicando con un mensaje si existe la conexion.
+    *
+    *
+    */
+
     public function BDconnection(){
         $db = new mysqli($this->url, $this->user, $this->pass);
         if ($db->connect_errno) {
@@ -28,6 +33,10 @@ class manualControlsBD{
         }
         $db->close();
     }
+
+    /*
+    *Esta funcion crea la base de datos si hay conexion en caso contrario saltara el mensaje.
+    */
 
     function createBD(){
       if($this->BDconnection() == false){
@@ -55,6 +64,10 @@ class manualControlsBD{
         }
     }
 
+    /*
+    *Esta funcion elimina la base de datos si hay conexion en caso contrario saltara el mensaje.
+    */
+
     function deleteBD(){
       if($this->BDconnection() == false){
         return "Sense conexió amb la BD";
@@ -81,6 +94,10 @@ class manualControlsBD{
       }
     }
 
+    /*
+    *Esta funcion crea las tablas con los campos indicados de base la datos indicada  si hay conexion en caso contrario saltara el mensaje.
+    */
+
     function createTables(){
       if($this->BDconnection() == false){
           return "Sense conexió amb la BD";
@@ -92,31 +109,43 @@ class manualControlsBD{
           $db->begin_transaction();
           //"CREATE TABLE alumne (alumID INT(15), alumDNI VARCHAR(10) PRIMARY KEY, alumNom VARCHAR(45), alumCognom VARCHAR(45), alumContra VARCHAR(45))"
 
-          $sentencia = 'CREATE TABLE IF NOT EXISTS alumne(
-                          alumID INT NOT NULL UNIQUE AUTO_INCREMENT,
-                          alumDNI VARCHAR(20) PRIMARY KEY,
-                          nom VARCHAR(45) NOT NULL,
-                          cognom VARCHAR(45) NOT NULL,
-                          contrasenya VARCHAR(45) NOT NULL);';
-          $stmt = $db->prepare($sentencia);
-          $stmt->execute();
-
-
-          $sentencia = 'CREATE TABLE IF NOT EXISTS asignatures(  
-                          nom_asignatura VARCHAR(45),
-                          DNI_Alumne VARCHAR(20),
-                          Nota INT,
-                          FOREIGN KEY (DNI_Alumne) REFERENCES alumne(alumDNI));';
-          $stmt = $db->prepare($sentencia);
-          $stmt->execute();
-
           $sentencia = 'CREATE TABLE IF NOT EXISTS profesors(
                           profID INT NOT NULL UNIQUE AUTO_INCREMENT,
                           DNI_Profesor VARCHAR(20) PRIMARY KEY,
                           nom VARCHAR(45) NOT NULL,
                           cognom VARCHAR(45) NOT NULL,
-                          asignatura VARCHAR(50) NOT NULL,
+                          asignatura VARCHAR(50),
                           contrasenya VARCHAR(45) NOT NULL);';
+          $stmt = $db->prepare($sentencia);
+          $stmt->execute();
+
+
+          $sentencia = 'CREATE TABLE IF NOT EXISTS curs(  
+                          nom_curs VARCHAR(45) PRIMARY KEY,
+                          profesor VARCHAR(45),
+                          FOREIGN KEY (profesor) REFERENCES profesors(DNI_Profesor));';
+          $stmt = $db->prepare($sentencia);
+          $stmt->execute();
+
+
+          $sentencia = 'CREATE TABLE IF NOT EXISTS alumne(
+                          alumID INT NOT NULL UNIQUE AUTO_INCREMENT,
+                          alumDNI VARCHAR(20) PRIMARY KEY,
+                          nom VARCHAR(45) NOT NULL,
+                          cognom VARCHAR(45) NOT NULL,
+                          contrasenya VARCHAR(45) NOT NULL,
+                          curs VARCHAR (45),
+                          FOREIGN KEY (curs) REFERENCES curs(nom_curs));';
+          $stmt = $db->prepare($sentencia);
+          $stmt->execute();
+
+          $sentencia = 'CREATE TABLE IF NOT EXISTS asignatures(
+                          nom_asignatura VARCHAR(45),
+                          DNI_Alumne VARCHAR(20),
+                          nota INT(2),
+                          curs VARCHAR(45),
+                          FOREIGN KEY (DNI_Alumne) REFERENCES alumne(alumDNI),
+                          FOREIGN KEY (curs) REFERENCES curs(nom_curs));';
           $stmt = $db->prepare($sentencia);
           $stmt->execute();
 
@@ -130,6 +159,10 @@ class manualControlsBD{
           $db->rollback();
       }
     }
+
+    /*
+*Esta funcion elimina las tablas con los campos indicados de base la datos indicada  si hay conexion en caso contrario saltara el mensaje.
+*/
 
     function deleteTables(){
       if($this->BDconnection() == false){

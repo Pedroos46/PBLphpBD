@@ -34,3 +34,27 @@ PBL-PHP-MYSQLi
 -grafico asignatura
 -graficocicle notas de les diverses asignatures(mitjana de notes)
 -grafico de tots el cicles(mitjanes de les seves notes)
+
+
+-ACABAR SECRETARIA ALUMNE //fet
+-ACABER GESTIO DE SECRETARIA
+-ACABAR CRUD MYSQUIL //fet
+-ACTUALITZAR CRUD //fet
+
+-ORDENAR LLISTES
+-ACTUALITZAR PANEL!! vista cascada + api
+
+-CLAU SECRETARI
+
+
+Futur commit:
+
+-Crud PDO Actualizar
+-Crud Mysql Actualitzat
+-Secretaria acabat?
+-Login Actualitzat
+
+-PANEL I INDEX Actualitzat
+-Documentacio
+
+-Vista cascada canviada ?

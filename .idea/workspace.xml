@@ -2,20 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="11310785-e646-4848-9610-d3cf017acea2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Formularis/formulariProfesor.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Formularis/taulaAlumne.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Formularis/taulaProfesor.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ImageMagick/graphs.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ImageMagick/imagick00.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ImageMagick/imagick01.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ImageMagick/imagick02.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ImageMagick/imagick03.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Secretaria.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Formularis/IntroActuDel.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Formularis/formulariSecretariaAlum.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Formularis/formulariSecretariaCursos.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Formularis/formulariSecretariaProf.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Formularis/taulaSecretariaAlum.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Formularis/taulaSecretariaCursos.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Formularis/taulaSecretariaProf.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Secretaria/SecretariaAlum.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Secretaria/SecretariaAssing.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Secretaria/SecretariaCurs.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Secretaria/SecretariaProf.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controls/DBChecker.php" afterPath="$PROJECT_DIR$/Controls/DBChecker.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controls/manualControlsBD.php" afterPath="$PROJECT_DIR$/Controls/manualControlsBD.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Crud/MySQLcrud.php" afterPath="$PROJECT_DIR$/Crud/MySQLcrud.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Crud/PDOcrud.php" afterPath="$PROJECT_DIR$/Crud/PDOcrud.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Index.php" afterPath="$PROJECT_DIR$/Index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Logica/loginManager.php" afterPath="$PROJECT_DIR$/Logica/loginManager.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Panel.php" afterPath="$PROJECT_DIR$/Panel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Secretaria.php" afterPath="$PROJECT_DIR$/Secretaria.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Styles/PanelStyle.css" afterPath="$PROJECT_DIR$/Styles/PanelStyle.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TODO" afterPath="$PROJECT_DIR$/TODO" />
     </list>
@@ -43,44 +49,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Panel.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Panel.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="26" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
-              <folding>
-                <marker date="1482166763558" expanded="true" signature="4291:4842" ph="..." />
-                <marker date="1482166763558" expanded="true" signature="4468:4745" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Secretaria.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Secretaria.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="61" column="28" lean-forward="false" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TODO" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/TODO">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="loginManager.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="loginManager.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Logica/loginManager.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state relative-caret-position="306">
+              <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -96,6 +69,12 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>upda</find>
+      <find>curs</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -110,25 +89,37 @@
         <option value="$PROJECT_DIR$/PDOcrud.php" />
         <option value="$PROJECT_DIR$/MySQLcrud.php" />
         <option value="$PROJECT_DIR$/loginManager.php" />
-        <option value="$PROJECT_DIR$/Controls/DBChecker.php" />
-        <option value="$PROJECT_DIR$/Crud/PDOcrud.php" />
-        <option value="$PROJECT_DIR$/Controls/manualControlsBD.php" />
         <option value="$PROJECT_DIR$/phpinfo.php" />
         <option value="$PROJECT_DIR$/ImageMagick/imagick01.php" />
         <option value="$PROJECT_DIR$/ImageMagick/graphs.php" />
-        <option value="$PROJECT_DIR$/Crud/MySQLcrud.php" />
         <option value="$PROJECT_DIR$/Edit.php" />
-        <option value="$PROJECT_DIR$/Styles/PanelStyle.css" />
-        <option value="$PROJECT_DIR$/Index.php" />
-        <option value="$PROJECT_DIR$/Logica/loginManager.php" />
         <option value="$PROJECT_DIR$/formulariProfesor.html" />
         <option value="$PROJECT_DIR$/formulariProfesor.php" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/Formularis/taulaProfesor.php" />
         <option value="$PROJECT_DIR$/Formularis/taulaAlumne.php" />
+        <option value="$PROJECT_DIR$/Styles/SecretariaSytle.css" />
+        <option value="$PROJECT_DIR$/Styles/PanelStyle.css" />
+        <option value="$PROJECT_DIR$/Formularis/taulaSecretariaAlum.php" />
+        <option value="$PROJECT_DIR$/Formularis/IntroActuDel.php" />
         <option value="$PROJECT_DIR$/Panel.php" />
-        <option value="$PROJECT_DIR$/Secretaria.php" />
         <option value="$PROJECT_DIR$/TODO" />
+        <option value="$PROJECT_DIR$/Index.php" />
+        <option value="$PROJECT_DIR$/Secretaria/SecretariaAssing.php" />
+        <option value="$PROJECT_DIR$/Formularis/formulariSecretariaAlum.php" />
+        <option value="$PROJECT_DIR$/Secretaria/SecretariaAlum.php" />
+        <option value="$PROJECT_DIR$/Formularis/taulaSecretariaProf.php" />
+        <option value="$PROJECT_DIR$/Secretaria/SecretariaProf.php" />
+        <option value="$PROJECT_DIR$/Secretaria.php" />
+        <option value="$PROJECT_DIR$/Secretaria/SecretariaCurs.php" />
+        <option value="$PROJECT_DIR$/Formularis/taulaSecretariaCursos.php" />
+        <option value="$PROJECT_DIR$/Formularis/formulariSecretariaProf.php" />
+        <option value="$PROJECT_DIR$/Formularis/formulariSecretariaCursos.php" />
+        <option value="$PROJECT_DIR$/Controls/DBChecker.php" />
+        <option value="$PROJECT_DIR$/Controls/manualControlsBD.php" />
+        <option value="$PROJECT_DIR$/Crud/PDOcrud.php" />
+        <option value="$PROJECT_DIR$/Crud/MySQLcrud.php" />
+        <option value="$PROJECT_DIR$/Logica/loginManager.php" />
       </list>
     </option>
   </component>
@@ -163,8 +154,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -201,35 +190,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Styles" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PBLphpBD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PBLphpBD" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="Logica" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PBLphpBD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PBLphpBD" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Formularis" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -263,6 +224,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -276,12 +239,14 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\daw2\php\PBLphpBD\Formularis" />
-      <recent name="C:\xampp\htdocs\daw2\php\PBLphpBD" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\daw2\php\PBLphpBD\Formularis" />
+      <recent name="C:\xampp\htdocs\daw2\php\PBLphpBD\Crud" />
       <recent name="C:\xampp\htdocs\daw2\php\PBLphpBD\ImageMagick" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\daw2\php\PBLphpBD" />
+      <recent name="C:\xampp\htdocs\daw2\php\PBLphpBD\Formularis" />
     </key>
   </component>
   <component name="RunManager" selected="PHP Script.Index.php">
@@ -325,7 +290,7 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run-script" />
+      <command value="run" />
       <scripts />
       <node-interpreter value="project" />
       <envs />
@@ -398,12 +363,20 @@
       <workItem from="1482112804829" duration="3302000" />
       <workItem from="1482157860484" duration="9992000" />
       <workItem from="1482174731729" duration="141000" />
-      <workItem from="1482251285416" duration="333000" />
+      <workItem from="1482251285416" duration="2286000" />
+      <workItem from="1482257498973" duration="2666000" />
+      <workItem from="1483627755682" duration="5994000" />
+      <workItem from="1483737114806" duration="601000" />
+      <workItem from="1483740958116" duration="4147000" />
+      <workItem from="1483791198229" duration="578000" />
+      <workItem from="1483802918150" duration="595000" />
+      <workItem from="1483804474622" duration="10214000" />
+      <workItem from="1483897829515" duration="13498000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113884000" />
+    <option name="totallyTimeSpent" value="154130000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -416,9 +389,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16617863" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1830161" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280757" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -446,65 +419,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <option name="time" value="8" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/PDOcrud.php" />
-    <entry file="file://$PROJECT_DIR$/Index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="2" lean-forward="false" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
-          <folding>
-            <marker date="1482166165556" expanded="true" signature="1363:1420" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manualControlsBD.php" />
-    <entry file="file://$PROJECT_DIR$/PDOcrud.php" />
-    <entry file="file://$PROJECT_DIR$/MySQLcrud.php" />
-    <entry file="file://$PROJECT_DIR$/TODO">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="29" lean-forward="false" selection-start-line="0" selection-start-column="29" selection-end-line="0" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <marker date="1482166165556" expanded="true" signature="1363:1420" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DBChecker.php" />
-    <entry file="file://$PROJECT_DIR$/manualControlsBD.php" />
-    <entry file="file://$PROJECT_DIR$/Index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1482166165556" expanded="true" signature="1363:1420" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/loginManager.php" />
-    <entry file="file://$PROJECT_DIR$/Index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="2" lean-forward="false" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
-          <folding>
-            <marker date="1482166165556" expanded="true" signature="1363:1420" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/loginManager.php" />
     <entry file="file://$PROJECT_DIR$/manualControlsBD.php" />
     <entry file="file://$PROJECT_DIR$/DBChecker.php" />
@@ -515,7 +434,16 @@
         <state relative-caret-position="0">
           <caret line="0" column="11" lean-forward="false" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
           <folding>
-            <marker date="1482166165556" expanded="true" signature="1363:1420" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="1280:1337" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="1981:2384" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="2042:2384" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="2083:2384" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="2132:2384" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="2217:2300" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="2354:2384" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="2515:2595" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="2830:2914" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="3158:3198" ph="..." />
           </folding>
         </state>
       </provider>
@@ -527,7 +455,16 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1482166165556" expanded="true" signature="1363:1420" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="1280:1337" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="1981:2384" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="2042:2384" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="2083:2384" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="2132:2384" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="2217:2300" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="2354:2384" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="2515:2595" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="2830:2914" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="3158:3198" ph="..." />
           </folding>
         </state>
       </provider>
@@ -540,33 +477,10 @@
     <entry file="file://$PROJECT_DIR$/manualControlsBD.php" />
     <entry file="file://$PROJECT_DIR$/MySQLcrud.php" />
     <entry file="file://$PROJECT_DIR$/loginManager.php" />
-    <entry file="file://$PROJECT_DIR$/Controls/DBChecker.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ImageMagick/ImageMagick.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Crud/PDOcrud.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
-          <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controls/manualControlsBD.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="113" column="67" lean-forward="false" selection-start-line="113" selection-start-column="67" selection-end-line="113" selection-end-column="67" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -606,50 +520,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Crud/MySQLcrud.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="56" column="43" lean-forward="true" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="43" />
-          <folding>
-            <marker date="1482160939971" expanded="true" signature="881:954" ph="INSERT INTO asignatures... " />
-            <marker date="1482160939971" expanded="true" signature="1601:1649" ph="DELETE FROM " />
-            <marker date="1482160939971" expanded="true" signature="2304:2352" ph="DELETE FROM " />
-            <marker date="1482160939971" expanded="true" signature="2304:2371" ph="DELETE FROM " />
-            <marker date="1482160939971" expanded="true" signature="3075:3147" ph="UPDATE asign... " />
-            <marker date="1482160939971" expanded="true" signature="3824:3874" ph="SELECT * FRO... asignatures" />
-            <marker date="1482160939971" expanded="true" signature="4635:4681" ph="SELECT * FRO... asignatures" />
-            <marker date="1482160939971" expanded="true" signature="5457:5526" ph="SELECT * FRO... asignatures" />
-            <marker date="1482160939971" expanded="true" signature="6368:6463" ph="INSERT INTO profesors... " />
-            <marker date="1482160939971" expanded="true" signature="7147:7191" ph="DELETE FROM " />
-            <marker date="1482160939971" expanded="true" signature="7880:7980" ph="UPDATE asign... " />
-            <marker date="1482160939971" expanded="true" signature="8692:8738" ph="SELECT * FRO... profesors" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Styles/PanelStyle.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/formulariProfesor.html" />
-    <entry file="file://$PROJECT_DIR$/Index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
-          <caret line="79" column="28" lean-forward="false" selection-start-line="79" selection-start-column="28" selection-end-line="79" selection-end-column="28" />
-          <folding>
-            <marker date="1482166165556" expanded="true" signature="1363:1420" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Formularis/taulaProfesor.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -657,15 +532,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Logica/loginManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="51">
+            <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
@@ -677,40 +553,232 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Panel.php">
+    <entry file="file://$PROJECT_DIR$/Styles/SecretariaSytle.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="26" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
-          <folding>
-            <marker date="1482166763558" expanded="true" signature="4291:4842" ph="..." />
-            <marker date="1482166763558" expanded="true" signature="4468:4745" ph="..." />
-          </folding>
+        <state relative-caret-position="323">
+          <caret line="19" column="39" lean-forward="false" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Secretaria.php">
+    <entry file="file://$PROJECT_DIR$/Styles/PanelStyle.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="61" column="28" lean-forward="false" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
+          <caret line="7" column="19" lean-forward="false" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Formularis/taulaSecretariaAlum.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="33" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="51">
-            <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/Formularis/IntroActuDel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="76" lean-forward="false" selection-start-line="7" selection-start-column="76" selection-end-line="7" selection-end-column="76" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TODO">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="59" column="25" lean-forward="false" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Panel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-459">
+          <caret line="48" column="28" lean-forward="false" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="28" />
+          <folding>
+            <marker date="1483912515785" expanded="true" signature="4513:5064" ph="..." />
+            <marker date="1483912515785" expanded="true" signature="4690:4967" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="767">
+          <caret line="88" column="16" lean-forward="false" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="16" />
+          <folding>
+            <marker date="1483915985687" expanded="true" signature="1280:1337" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="1981:2384" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="2042:2384" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="2083:2384" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="2132:2384" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="2217:2300" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="2354:2384" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="2515:2595" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="2830:2914" ph="..." />
+            <marker date="1483915985687" expanded="true" signature="3158:3198" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Formularis/formulariSecretariaAlum.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="65" lean-forward="false" selection-start-line="12" selection-start-column="65" selection-end-line="12" selection-end-column="65" />
+          <folding>
+            <marker date="1483912596047" expanded="true" signature="255:263" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Secretaria/SecretariaAlum.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="51" column="67" lean-forward="false" selection-start-line="51" selection-start-column="60" selection-end-line="51" selection-end-column="67" />
+          <folding>
+            <marker date="1483916546891" expanded="true" signature="2914:2938" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Formularis/taulaSecretariaProf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="40" lean-forward="true" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Secretaria.php">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
-          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <caret line="68" column="100" lean-forward="false" selection-start-line="68" selection-start-column="100" selection-end-line="68" selection-end-column="100" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Secretaria/SecretariaAssing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Secretaria/SecretariaProf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="65" column="49" lean-forward="true" selection-start-line="65" selection-start-column="49" selection-end-line="65" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Formularis/formulariSecretariaProf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Formularis/taulaSecretariaCursos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="31" lean-forward="false" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Secretaria/SecretariaCurs.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-440">
+          <caret line="65" column="58" lean-forward="false" selection-start-line="65" selection-start-column="58" selection-end-line="65" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Formularis/formulariSecretariaCursos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="64" lean-forward="false" selection-start-line="12" selection-start-column="64" selection-end-line="12" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controls/manualControlsBD.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="165" column="4" lean-forward="false" selection-start-line="165" selection-start-column="4" selection-end-line="165" selection-end-column="4" />
+          <folding>
+            <marker date="1483920627970" expanded="true" signature="2747:3134" ph="CREATE TABLE... IF" />
+            <marker date="1483920627970" expanded="true" signature="3236:3463" ph="CREATE TABLE... IF" />
+            <marker date="1483920627970" expanded="true" signature="3565:4011" ph="CREATE TABLE... IF" />
+            <marker date="1483920627970" expanded="true" signature="4112:4489" ph="CREATE TABLE... IF" />
+            <marker date="1483920627970" expanded="true" signature="5200:5220" ph="DROP TABLE p... " />
+            <marker date="1483920627970" expanded="true" signature="5318:5340" ph="DROP TABLE a... " />
+            <marker date="1483920627970" expanded="true" signature="5438:5455" ph="DROP TABLE a... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controls/DBChecker.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="3" lean-forward="false" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Crud/PDOcrud.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-238">
+          <caret line="118" column="105" lean-forward="false" selection-start-line="118" selection-start-column="105" selection-end-line="118" selection-end-column="105" />
+          <folding>
+            <marker date="1483920808905" expanded="true" signature="1509:1619" ph="INSERT INTO alumne... " />
+            <marker date="1483920808905" expanded="true" signature="2762:2801" ph="DELETE FROM " />
+            <marker date="1483920808905" expanded="true" signature="3753:3862" ph="UPDATE alumn... " />
+            <marker date="1483920808905" expanded="true" signature="5029:5070" ph="SELECT * FRO... alumne" />
+            <marker date="1483920808905" expanded="true" signature="5697:5717" ph="SELECT * FRO... alumne" />
+            <marker date="1483920808905" expanded="true" signature="6322:6351" ph="SELECT * FRO... alumne" />
+            <marker date="1483920808905" expanded="true" signature="6322:6355" ph="SELECT * FRO... alumne" />
+            <marker date="1483920808905" expanded="true" signature="6322:6357" ph="SELECT * FRO... alumne" />
+            <marker date="1483920808905" expanded="true" signature="6943:6977" ph="SELECT * FRO... alumne" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Crud/MySQLcrud.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="123" column="37" lean-forward="false" selection-start-line="123" selection-start-column="37" selection-end-line="123" selection-end-column="37" />
+          <folding>
+            <marker date="1483920948207" expanded="true" signature="1016:1111" ph="INSERT INTO profesors... " />
+            <marker date="1483920948207" expanded="true" signature="1740:1784" ph="DELETE FROM " />
+            <marker date="1483920948207" expanded="true" signature="2440:2536" ph="UPDATE profe... " />
+            <marker date="1483920948207" expanded="true" signature="3164:3210" ph="SELECT * FRO... profesors" />
+            <marker date="1483920948207" expanded="true" signature="3817:3840" ph="SELECT * FRO... profesors" />
+            <marker date="1483920948207" expanded="true" signature="4447:4497" ph="INSERT INTO curs... " />
+            <marker date="1483920948207" expanded="true" signature="5040:5075" ph="DELETE FROM " />
+            <marker date="1483920948207" expanded="true" signature="5599:5646" ph="UPDATE curs " />
+            <marker date="1483920948207" expanded="true" signature="6182:6219" ph="SELECT * FRO... curs" />
+            <marker date="1483920948207" expanded="true" signature="6851:6888" ph="SELECT * FRO... curs" />
+            <marker date="1483920948207" expanded="true" signature="7511:7529" ph="SELECT * FRO... curs" />
+            <marker date="1483920948207" expanded="true" signature="8287:8368" ph="INSERT INTO asignatures... " />
+            <marker date="1483920948207" expanded="true" signature="8988:9036" ph="DELETE FROM " />
+            <marker date="1483920948207" expanded="true" signature="9700:9767" ph="DELETE FROM " />
+            <marker date="1483920948207" expanded="true" signature="10477:10560" ph="UPDATE asign... " />
+            <marker date="1483920948207" expanded="true" signature="11181:11231" ph="SELECT * FRO... asignatures" />
+            <marker date="1483920948207" expanded="true" signature="11922:11947" ph="SELECT * FRO... asignatures" />
+            <marker date="1483920948207" expanded="true" signature="12627:12673" ph="SELECT * FRO... asignatures" />
+            <marker date="1483920948207" expanded="true" signature="13418:13487" ph="SELECT * FRO... asignatures" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Logica/loginManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
           <folding />
         </state>
       </provider>

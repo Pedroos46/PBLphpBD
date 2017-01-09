@@ -4,7 +4,7 @@ require_once("Crud/MySQLcrud.php");
 require_once("Crud/PDOcrud.php");
 /**
  * Created by PhpStorm.
- * User: Roger Pedrós Villorbina
+ * User: Roger Pedrós Villorbina, Aldair Ñique del Aguila, Alejandro Rodriguez Garcia.
  * Date: 11/12/2016
  * Time: 23:31
  */
@@ -18,19 +18,24 @@ class loginManager{
     function __destruct(){
     }
 
+    //Funcio que s'encarrega d'administrar el sistema de login
     function loginCheck($userDNI, $pass){
         session_start();
-        $profesor = $this->MySQLi->getProfesor($userDNI);
-        $alumne = $this->PDO->getAlumne($userDNI);
 
+        print_r($profesor = $this->MySQLi->getProfesor($userDNI));
+        print_r($alumne = $this->PDO->getAlumne($userDNI));
+
+
+        if ($userDNI == "secretaria"){
+            $_SESSION['loged'] = true; $_SESSION['dni']="secretaria";
+            $_SESSION['type'] = "secretaria";
+            header("Location: http://localhost/daw2/php/PBLphpBD/secretaria.php");
+            exit;
+        }
 
         if (empty($userDNI) || empty($pass)){
             return false;
             exit;
-        }
-
-        if ($userDNI == "Secretaria"){
-
         }
 
         if(count($profesor) > 2){
