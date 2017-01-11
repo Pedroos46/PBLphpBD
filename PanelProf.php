@@ -23,7 +23,7 @@ $BDconf = ["localhost", "root", "root", "escola"];
 $MySQLi = new MySQLcrud($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 $PDO = new PDOcrud($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 
-$Imagick = new ImageMagick($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
+//$Imagick = new ImageMagick($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 
 //print_r($MySQLi->getAsignaturaAlum("47931590G"));
 //print_r($MySQLi->getAsignaturaProf($usuari[$asignatura]));
@@ -92,14 +92,19 @@ if($_SESSION['type'] == "Profesor"){
 
                     include("Formularis/formulariProfesor.php");
 
-                    echo '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">';
-                    echo '<input class="mdl-textfield__input" id="curs" name="curs" value="" type="text" readonly tabIndex="-1" data-val="BLR"/>';
-                    echo '<label class="mdl-textfield__label" for="country">Curs</label>';
-                    echo '<ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="curs">';
-                    foreach ($DataCursos as $data){
-                        echo '<li class="mdl-menu__item">'.$data[nom_curs]. '</li>';
-                    }
-                    echo '</ul>';
+//                    echo '<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">';
+//                    echo '<input class="mdl-textfield__input" id="curs" name="curs" value="" type="text" readonly tabIndex="-1" data-val="BLR"/>';
+//                    echo '<label class="mdl-textfield__label" for="country">Curs</label>';
+//                    echo '<ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="curs">';
+//                    foreach ($DataCursos as $data){
+//                        echo '<li class="mdl-menu__item">'.$data[nom_curs]. '</li>';
+//                    }
+//                    echo '</ul>';
+//                    echo '</div>';
+
+                    echo '<div class="mdl-textfield mdl-js-textfield">';
+                    echo '<input class="mdl-textfield__input" type="text" name="curs" id="curs" autocomplete="off" />';
+                    echo '<label class="mdl-textfield__label" for="curs">curs</label>';
                     echo '</div>';
 
                     include("Formularis/IntroActuDel.php");
@@ -114,13 +119,13 @@ if($_SESSION['type'] == "Profesor"){
 
                     if(isset($_POST['alumdni']) && isset($_POST['aign']) && isset($_POST['nota']) && isset($_POST['options'])){
                         if(($_POST['options'])== "Introduir"){
-                            echo $MySQLi->fillAsignatura($_POST['aign'], $_POST['alumdni'], $_POST['nota']);
+                            echo $MySQLi->fillAsignatura($_POST['aign'], $_POST['alumdni'], $_POST['nota'], $_POST['curs']);
                         }
                         if(($_POST['options'])== "Eliminar"){
-                            echo $MySQLi->deleteNotaAsignatura($_POST['aign'], $_POST['alumdni']);
+                            echo $MySQLi->deleteNotaAsignatura($_POST['aign'], $_POST['alumdni'], $_POST['curs']);
                         }
                         if(($_POST['options'])== "Actualitzar"){
-                            echo $MySQLi->updateAsignatura($_POST['aign'], $_POST['alumdni'], $_POST['nota']);
+                            echo $MySQLi->updateAsignatura($_POST['aign'], $_POST['alumdni'], $_POST['nota'], $_POST['curs']);
                         }
 
                     } else{

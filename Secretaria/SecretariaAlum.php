@@ -22,9 +22,14 @@ $BDconf = ["localhost", "root", "root", "escola"];
 $PDO = new PDOcrud($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 $MySQLi = new MySQLcrud($BDconf[0],$BDconf[1],$BDconf[2],$BDconf[3]);
 
-$alumnes = $PDO->getTotsAlumne();
 $DataCursos = $MySQLi->getTotsCursos();
 
+if( ($_SESSION['ordena'] == false) || ($_SESSION['ordena'] == null)){
+    $alumnes = $PDO->getTotsAlumne();
+}
+if($_SESSION['ordena'] == true){
+    $alumnes = $PDO->getTotsAlumneOrderbyname();;
+}
 
 ?>
 
@@ -59,8 +64,15 @@ $DataCursos = $MySQLi->getTotsCursos();
         </header>
         <main class="mdl-layout__content">
             <div class="page-content">
+                 <button  href='http://localhost/daw2/php/PBLphpBD/Secretaria/SecretariaAlum.php?hello=true' class="mdl-button mdl-js-button mdl-button--raised">
+                    Ordena per nom.
+                </button>
+
                 <!--GENERADOR TAULA-->
                 <?php
+                if($_GET['hello'] = true) {
+                    $_SESSION['ordena'] = true;
+                }
 
                 include("../Formularis/taulaSecretariaAlum.php");
                     $iteracionsMax = count($alumnes);

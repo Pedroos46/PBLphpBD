@@ -29,7 +29,11 @@ td{
     float: left;
     margin: 15px;
 }
+.mdl-button{
+    float: left;
+    margin: 15px;
 
+}
 .demo-card-wide{
     float: left;
     margin: 15px;

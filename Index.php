@@ -10,6 +10,7 @@ require_once("ImageMagick/graphs.php");
 
 session_start();
 $_SESSION['loged'] = false;
+$_SESSION['ordena'] = false;
 
 $BDconf = ["localhost", "root", "root", "escola"];
 

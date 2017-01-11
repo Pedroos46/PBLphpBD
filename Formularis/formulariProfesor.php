@@ -5,7 +5,7 @@ echo'<h2 class="mdl-card__title-text">Gestionar notes:</h2>';
 echo'</div>';
 echo'<div class="mdl-card__supporting-text">';
 
-echo "<form  id='login' action='../PanelProf.php' method='post' accept-charset='UTF-8'>";
+echo "<form  id='login' action='http://localhost/daw2/php/PBLphpBD/panelProf.php' method='post' accept-charset='UTF-8'>";
 echo '<div class="mdl-textfield mdl-js-textfield">';
 echo'<input class="mdl-textfield__input" type="text" name="alumdni" id="alumdni" autocomplete="off" />';
 echo'<label class="mdl-textfield__label" for="alumdni">DNI Alumne</label>';

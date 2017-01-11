@@ -81,7 +81,7 @@ class PDOcrud{
 
             $bd->beginTransaction();
 
-            $sentencia = $bd->prepare("DELETE FROM alumne WHERE alumDNI = :dni ");
+            $sentencia = $bd->prepare("DELETE FROM alumne WHERE alumDNI = :dni;");
             $sentencia->bindParam(':dni', $alumDNI);
             $sentencia->execute();
 

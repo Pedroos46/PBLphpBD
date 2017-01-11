@@ -417,9 +417,9 @@ class MySQLcrud{
           $db = new mysqli($this->url, $this->user, $this->pass, $this->bd);
           $db->begin_transaction();
 
-          $sentencia = 'UPDATE asignatures SET nom_asignatura = ?, nota = ? , curs = ? WHERE DNI_Alumne = ?';
+          $sentencia = 'UPDATE asignatures SET nom_asignatura = ?, nota = ?, curs = ? WHERE DNI_Alumne = ?';
           $stmt = $db->prepare($sentencia);
-          $stmt->bind_param('sis', $nomAsingatura, $Nota, $Curs, $DNIAlumne);
+          $stmt->bind_param('siss', $nomAsingatura, $Nota, $Curs, $DNIAlumne);
 
           $stmt->execute();
           $stmt->close();
